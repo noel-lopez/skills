@@ -12,7 +12,7 @@ El flujo entero de un vistazo, de la tesis a las skills. Nació como una charla 
 
 ## La guía completa
 
-El desarrollo entero está en [`guide/workflow.md`](guide/workflow.md): por qué no uso un framework de SDD, cómo reparto el trabajo con la IA, el camino feliz, las maniobras para cuando algo se tuerce, y el índice de para qué uso cada skill (las mías y las de Matt Pocock). Si prefieres verlo de un vistazo antes de leer, está el [recorrido visual](#resumen-visual-del-flujo).
+El desarrollo entero está en [`guide/workflow.md`](guide/workflow.md): por qué no uso un framework de SDD, cómo reparto el trabajo con la IA, el camino feliz y las maniobras para cuando algo se tuerce.
 
 ## Instalación
 
