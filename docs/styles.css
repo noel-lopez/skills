@@ -1,0 +1,1691 @@
+/* ============================================================
+   Presentación — "No adoptes un framework SDD. Hazte el tuyo."
+   Sistema visual minimal editorial-técnico (estilo deck Sentry).
+   Fondo blanco · texto negro · único acento índigo.
+   Base congelada en prototype-ui/; aquí se extiende para el deck.
+   ============================================================ */
+
+/* ---- Tokens ---- */
+:root {
+  /* Color */
+  --bg: #ffffff;
+  --ink: #0a0a0a;
+  --ink-soft: #52525b;
+  --ink-faint: #a1a1aa;
+  --line: #e4e4e7;
+  --line-soft: #f1f1f3;
+
+  --indigo: #4f46e5;
+  --indigo-ink: #4338ca;
+  --indigo-tint: #eef0ff; /* fondo muy tenue para resaltes */
+  --coral: #e06a5a;       /* marcador ✕ apagado */
+
+  --dark: #0e1016;        /* único bloque oscuro (terminal) */
+  --dark-ink: #e7e8ef;
+  --dark-faint: #6b6f80;
+
+  /* Tipografía */
+  --font-display: "Poppins", "Figtree", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+
+  /* Ritmo */
+  --pad-x: clamp(3rem, 8vw, 9rem);
+  --pad-y: clamp(2.5rem, 6vh, 5rem);
+  --maxw: 1100px;
+
+  /* Movimiento */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---- Reset ligero ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.1vw + 0.6rem, 1.25rem);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow: hidden;
+}
+
+/* ============================================================
+   Deck + slides
+   ============================================================ */
+.deck {
+  position: fixed;
+  inset: 0;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--pad-y) var(--pad-x);
+  opacity: 0;
+  transition: opacity 0.45s var(--ease);
+}
+
+.slide.is-active {
+  display: flex;
+  opacity: 1;
+}
+
+.slide__inner {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+/* Slide alineado arriba (cuando el contenido cambia bajo un encabezado fijo) */
+.slide--top {
+  justify-content: flex-start;
+  padding-top: clamp(3rem, 11vh, 7rem);
+}
+
+/* Slide centrado puro (statements) */
+.slide--center {
+  justify-content: center;
+  text-align: center;
+}
+
+/* ---- Eyebrow de sección ---- */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--indigo);
+  margin-bottom: 1.5rem;
+}
+
+.eyebrow--muted {
+  color: var(--ink-faint);
+}
+
+/* ---- Titulares ---- */
+.title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.title--hero {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  max-width: 16ch;
+}
+
+.title--section {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  max-width: 18ch;
+}
+
+/* Variante ancha: para titulares cuyo salto de línea propio (<br>)
+   no debe verse alterado por wraps extra (p. ej. slide 8). */
+.title--wide {
+  max-width: 30ch;
+}
+
+.accent {
+  color: var(--indigo);
+}
+
+/* Texto de apoyo bajo un titular */
+.lede {
+  margin-top: 1.5rem;
+  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+  color: var(--ink-soft);
+  max-width: 46ch;
+  line-height: 1.5;
+}
+
+.slide--center .lede {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================================
+   Statement — frases contundentes (gancho, veredicto, cierre)
+   ============================================================ */
+.statement {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  max-width: 20ch;
+}
+
+.slide--center .statement {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.statement--quote {
+  font-weight: 600;
+}
+
+/* ============================================================
+   Resumen (slide 20) — la frase en dos tiempos
+   Lo que decide el humano (negro) / lo que ejecuta la IA (gris),
+   con el OK final de vuelta en índigo. Eco de la tesis humano/IA.
+   ============================================================ */
+.summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  margin-top: 1.75rem;
+}
+
+.summary__beat {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.summary__beat--ai {
+  color: var(--ink-soft);
+}
+
+.summary__sep {
+  width: 2.5rem;
+  height: 2px;
+  background: var(--indigo);
+  border-radius: 2px;
+}
+
+/* ============================================================
+   Escena (slide 2) — tres tiempos con jerarquía
+   Dos líneas de setup atenuadas + un remate grande.
+   Alineado a la izquierda para dar borde y orden.
+   ============================================================ */
+.scene__beats {
+  position: relative;
+  padding-left: clamp(1.25rem, 2.5vw, 2rem);
+  border-left: 3px solid var(--line);
+}
+
+.scene__setup {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 2.8vw, 2.3rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--ink-soft);
+}
+
+.scene__setup + .scene__setup {
+  margin-top: 0.2rem;
+}
+
+.scene__punch {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 5.2vw, 4.2rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  margin-top: 1.1rem;
+  max-width: 26ch;
+}
+
+/* ============================================================
+   Portada
+   ============================================================ */
+.cover {
+  justify-content: center;
+}
+
+.cover__meta {
+  margin-top: 2.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+
+.cover__rule {
+  width: 2.5rem;
+  height: 2px;
+  background: var(--indigo);
+  border-radius: 2px;
+}
+
+.cover__name {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ============================================================
+   Blockquote con corchete índigo
+   ============================================================ */
+.quote {
+  border-left: 4px solid var(--indigo);
+  padding-left: clamp(1.5rem, 3vw, 2.75rem);
+}
+
+.quote__body {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.75rem, 3.4vw, 3rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+.quote__body .accent {
+  font-weight: 700;
+}
+
+.quote__cite {
+  margin-top: 1.75rem;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+}
+
+.quote__cite strong {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ============================================================
+   Tarjetas — borde fino + icono + label bold
+   ============================================================ */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.cards--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.cards--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 900px) {
+  .cards,
+  .cards--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  min-width: 0; /* evita que el contenido desborde la celda del grid */
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.5rem 1.35rem 1.45rem;
+  background: var(--bg);
+  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.card__icon {
+  display: block; /* clave: un <span> inline ignora width/height */
+  width: 24px;
+  height: 24px;
+  color: var(--indigo);
+  margin-bottom: 1rem;
+}
+
+.card__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.card__label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.4rem;
+}
+
+.card__text {
+  font-size: 0.96rem;
+  color: var(--ink-soft);
+  line-height: 1.45;
+  overflow-wrap: break-word;
+}
+
+/* Barra de resalte inferior — takeaway */
+.takeaway {
+  margin-top: 2.75rem;
+  background: var(--indigo-tint);
+  border-radius: 12px;
+  padding: 1.1rem 1.5rem;
+  font-size: 1.05rem;
+  color: var(--indigo-ink);
+}
+
+.takeaway strong {
+  font-weight: 700;
+}
+
+/* ============================================================
+   Chips mono — nombres de frameworks / caja de herramientas
+   ============================================================ */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+.chip {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  background: var(--bg);
+  transition: border-color 0.25s var(--ease), color 0.25s var(--ease);
+}
+
+.chip--accent {
+  border-color: var(--indigo);
+  color: var(--indigo-ink);
+  background: var(--indigo-tint);
+}
+
+/* ============================================================
+   Críticas numeradas
+   ============================================================ */
+.crit {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  margin-top: 2.75rem;
+}
+
+@media (max-width: 900px) {
+  .crit {
+    grid-template-columns: 1fr;
+  }
+}
+
+.crit__item {
+  border-top: 2px solid var(--indigo);
+  padding-top: 1.1rem;
+}
+
+.crit__num {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--indigo);
+  margin-bottom: 0.6rem;
+}
+
+.crit__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.55rem;
+}
+
+.crit__text {
+  font-size: 0.96rem;
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+
+/* ============================================================
+   Dúo a dos columnas — BEFORE/AFTER, TÚ/LA IA, etc.
+   ============================================================ */
+.duo {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  margin-top: 2.75rem;
+  align-items: start;
+}
+
+.duo__divider {
+  align-self: stretch;
+  background: var(--line);
+}
+
+.duo__eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 1.1rem;
+}
+
+.duo__eyebrow--ink {
+  color: var(--ink-faint);
+}
+
+.duo__eyebrow--accent {
+  color: var(--indigo);
+}
+
+.duo__head {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.9rem;
+}
+
+.duo__text {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+/* Checklist con marcadores ✕ (coral) y ✓ (índigo) */
+.checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.checklist li {
+  display: grid;
+  grid-template-columns: 1.4rem 1fr;
+  gap: 0.5rem;
+  align-items: start;
+  font-size: 1rem;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.checklist li::before {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.checklist--bad li {
+  color: var(--ink-soft);
+}
+
+.checklist--bad li::before {
+  content: "\00d7"; /* × */
+  color: var(--coral);
+}
+
+.checklist--good li::before {
+  content: "\2713"; /* ✓ */
+  color: var(--indigo);
+}
+
+/* ============================================================
+   Terminal oscuro — único bloque oscuro del deck
+   ============================================================ */
+.terminal {
+  margin-top: 2.25rem;
+  background: var(--dark);
+  color: var(--dark-ink);
+  border-radius: 14px;
+  padding: 1.6rem 1.8rem;
+  font-family: var(--font-mono);
+  font-size: clamp(0.92rem, 1.2vw, 1.08rem);
+  line-height: 1.6;
+  box-shadow: 0 24px 60px -28px rgba(14, 16, 22, 0.55);
+}
+
+/* Cada comando es una línea; en zoom extremo el comentario hace wrap
+   con sangría, pero nunca explota a varias filas como con pre-wrap. */
+.terminal__line {
+  white-space: normal;
+  text-indent: -1.5rem;
+  padding-left: 1.5rem;
+}
+
+.terminal__line + .terminal__line {
+  margin-top: 0.9rem;
+}
+
+.terminal__prompt {
+  color: var(--indigo);
+  font-weight: 700;
+  user-select: none;
+}
+
+.terminal__cmd {
+  color: var(--dark-ink);
+  font-weight: 500;
+  margin-left: 0.6rem;
+}
+
+.terminal__comment {
+  color: var(--dark-faint);
+  margin-left: 1.1rem;
+}
+
+.terminal__ok {
+  color: #6ee7b7;
+  margin-left: 0.5rem;
+}
+
+/* ============================================================
+   Cajas grises — deep modules (costuras índigo, relleno gris)
+   ============================================================ */
+.boxes {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0;
+  margin-top: 3rem;
+}
+
+.boxes__mod {
+  flex: 1;
+  max-width: 230px;
+  border: 2px solid var(--indigo);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.boxes__face {
+  /* la interfaz: lo que importa, en índigo */
+  background: var(--indigo);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.6rem 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.boxes__fill {
+  /* el relleno: trabajo de la IA, atenuado en gris con textura */
+  flex: 1;
+  min-height: 7.5rem;
+  display: grid;
+  place-items: center;
+  color: var(--ink-faint);
+  font-size: 0.8rem;
+  background-color: #f6f6f7;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    #ececee 0,
+    #ececee 1px,
+    transparent 1px,
+    transparent 8px
+  );
+}
+
+.boxes__seam {
+  /* la costura entre cajas: donde va la atención humana */
+  align-self: center;
+  width: clamp(1.5rem, 4vw, 3.5rem);
+  height: 2px;
+  background: var(--indigo);
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.boxes__seam::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--indigo);
+  transform: translate(-50%, -50%);
+}
+
+.boxes__legend {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-top: 2.25rem;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+.boxes__key {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.boxes__swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+}
+
+.boxes__swatch--indigo {
+  background: var(--indigo);
+}
+
+.boxes__swatch--gray {
+  background-color: #f6f6f7;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    #d8d8dc 0,
+    #d8d8dc 1px,
+    transparent 1px,
+    transparent 6px
+  );
+  border: 1px solid var(--line);
+}
+
+/* ============================================================
+   Inciso del libro (slide 9, paso 1) — popup sobre el diagrama
+   Backdrop tenue que atenúa el diagrama + tarjeta portada · texto.
+   Reutiliza el revelado genérico [data-step].
+   ============================================================ */
+.bookpop {
+  position: absolute;
+  inset: 0;
+  z-index: 40; /* sobre el diagrama, bajo el chrome (50) y la flowbar (60) */
+  display: grid;
+  place-items: center;
+  padding: var(--pad-y) var(--pad-x);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(3px);
+}
+
+/* sin revelar: no captura clics (deja usar dots/flechas detrás) */
+.bookpop:not(.is-revealed) {
+  pointer-events: none;
+}
+
+.bookpop__card {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  max-width: 720px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  box-shadow: 0 32px 80px -32px rgba(14, 16, 22, 0.4);
+}
+
+.bookpop__cover {
+  flex: 0 0 auto;
+  width: clamp(120px, 14vw, 168px);
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 12px 30px -12px rgba(14, 16, 22, 0.45);
+}
+
+.bookpop__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.bookpop__author {
+  margin-top: 0.15rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.bookpop__text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.bookpop__text + .bookpop__text {
+  margin-top: 0.7rem;
+}
+
+.bookpop__text em {
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 0.88em;
+  color: var(--indigo-ink);
+}
+
+.bookpop__text strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ============================================================
+   Inciso de la skill (slide 13) — grill-me en crudo (paso 1)
+   + shoutout a Matt Pocock (paso 2). Mismo backdrop que .bookpop.
+   ============================================================ */
+.skillpop {
+  position: absolute;
+  inset: 0;
+  z-index: 40; /* sobre el contenido, bajo el chrome */
+  display: grid;
+  place-items: center;
+  padding: var(--pad-y) var(--pad-x);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(3px);
+}
+
+.skillpop:not(.is-revealed) {
+  pointer-events: none;
+}
+
+.skillpop__stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.25rem, 3vh, 2rem);
+  width: 100%;
+  max-width: 700px;
+}
+
+/* Tarjeta tipo archivo: la skill tal cual (único bloque oscuro) */
+.skillfile {
+  width: 100%;
+  background: var(--dark);
+  border: 1px solid #262a35;
+  border-radius: 14px;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  box-shadow: 0 32px 80px -32px rgba(14, 16, 22, 0.45);
+}
+
+.skillfile__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1rem;
+  background: #171a22;
+  border-bottom: 1px solid #262a35;
+}
+
+.skillfile__dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #3a3f4d;
+}
+
+.skillfile__name {
+  margin-left: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--dark-faint);
+}
+
+.skillfile__body {
+  padding: 1.3rem 1.5rem;
+  font-size: 0.86rem;
+  line-height: 1.65;
+  color: var(--dark-ink);
+}
+
+.skillfile__body p + p {
+  margin-top: 0.7rem;
+}
+
+.skillfile__fm {
+  color: var(--dark-faint);
+}
+
+.skillfile__key {
+  color: var(--indigo);
+}
+
+/* el cuerpo de la skill: lo que de verdad importa, resaltado */
+.skillfile__prose {
+  color: #fff;
+}
+
+/* Shoutout a Matt Pocock (paso 2) */
+.shout {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.shout__avatar {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  background: var(--indigo);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 10px 28px -10px rgba(79, 70, 229, 0.55);
+}
+
+.shout__avatar::after {
+  content: "MP"; /* fallback si la foto no carga */
+}
+
+.shout__avatar img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.shout__cap {
+  font-size: 0.98rem;
+  color: var(--ink-soft);
+  line-height: 1.35;
+}
+
+.shout__cap strong {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ============================================================
+   Inciso de handoff (slide 18) — smart/dumb zone + handoff bidireccional.
+   Tema claro. Beat 1: concepto (1 ventana). Beats 2-5: ejemplo (2 ventanas).
+   Índigo = contexto/trabajo que va hacia adelante · menta = conclusión que
+   vuelve. Animación 100% ligada a [data-step], sin loops.
+   ============================================================ */
+.hxpop {
+  position: absolute;
+  inset: 0;
+  z-index: 40; /* sobre el contenido, bajo el chrome */
+  display: grid;
+  place-items: center;
+  padding: var(--pad-y) var(--pad-x);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(3px);
+}
+
+.hxpop:not(.is-revealed) {
+  pointer-events: none;
+}
+
+.hxpop__card {
+  width: 100%;
+  max-width: 720px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  box-shadow: 0 32px 80px -32px rgba(14, 16, 22, 0.4);
+}
+
+.hxpop__cap {
+  position: relative;
+  height: 1.1rem; /* reserva el hueco para que el stage no salte en beat 2 */
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* Dos títulos en el mismo hueco: concepto (beat 1) y ejemplo (beat 2+). */
+.hxcap {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.hxcap--concept {
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+
+.slide[data-step="1"] .hxcap--concept {
+  opacity: 1;
+}
+
+/* ---- Escenario: coordenadas fijas para que los reveals no reflowen ---- */
+.hxstage {
+  position: relative;
+  width: 100%;
+  height: 360px;
+}
+
+/* ---- Una ventana de contexto (rectángulo con split smart/dumb) ---- */
+.hxwin {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.hxwin--main {
+  top: 0;
+  transition: top 0.45s var(--ease), transform 0.45s var(--ease);
+}
+
+/* Beat 1: la ventana-concepto vive centrada y sola. Al pasar a beat 2 sube. */
+.slide[data-step="1"] .hxwin--main {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hxwin--sec {
+  top: 278px;
+}
+
+.hxwin__name {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.hxwin__bar {
+  position: relative;
+  height: 60px;
+  border: 1px solid var(--ink-faint);
+  border-radius: 10px;
+  /* overflow visible: el "100K" del beat 1 vive por encima del borde superior */
+}
+
+/* Zonas: smart (índigo tenue) a la izquierda, dumb (gris) a la derecha. */
+.hxwin__smart {
+  position: absolute;
+  inset: 0 60% 0 0; /* 40% izquierdo */
+  display: flex;
+  align-items: stretch;
+  gap: 4px;
+  padding: 5px;
+  background: var(--indigo-tint);
+  border-radius: 9px 0 0 9px;
+}
+
+.hxwin__bar::after {
+  /* dumb zone */
+  content: "";
+  position: absolute;
+  inset: 0 0 0 40%;
+  background: var(--line-soft);
+  border-radius: 0 9px 9px 0;
+}
+
+.hxwin__split {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 40%;
+  border-left: 1px dashed var(--ink-faint);
+  z-index: 2;
+}
+
+/* Etiquetas del concepto: solo visibles en beat 1 (eliminan ruido después). */
+.hx100k,
+.hxzone {
+  position: absolute;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+  pointer-events: none;
+}
+
+.slide[data-step="1"] .hx100k,
+.slide[data-step="1"] .hxzone {
+  opacity: 1;
+}
+
+.hx100k {
+  top: -1.35rem;
+  left: 40%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.hxzone {
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+}
+
+.hxzone--smart {
+  left: 20%;
+  transform: translate(-50%, -50%);
+  color: var(--indigo-ink);
+}
+
+.hxzone--dumb {
+  left: 70%;
+  transform: translate(-50%, -50%);
+  color: var(--ink-faint);
+}
+
+/* ---- Bloques de contexto dentro de la smart zone ---- */
+.hxblock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 5px;
+  background: var(--indigo);
+  transform-origin: left center;
+}
+
+/* Etiqueta de la skill dentro del bloque (blanco sobre índigo). */
+.hxblock__label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: #fff;
+  white-space: nowrap;
+  padding: 0 6px;
+}
+
+.hxblock--work {
+  flex: 0 0 48%;
+}
+.hxblock--brief {
+  flex: 0 0 14%;
+}
+/* El trabajo de la secundaria: el bloque grande, crece desde la izquierda. */
+.hxblock--work2 {
+  flex: 0 0 66%;
+}
+
+/* La conclusión que vuelve: bloque menta DIMINUTO (impacto «mira qué poco»). */
+.hxblock--back {
+  flex: 0 0 12%;
+  background: #6ee7b7;
+}
+
+/* Animaciones one-shot ligadas al paso (no loops): el bloque receptor
+   «absorbe» el archivo (espera + pop), y el trabajo de la secundaria CRECE.
+   work2 anima flex-basis (no scaleX) para no deformar el texto «prototype». */
+.hxblock--brief.is-revealed,
+.hxblock--back.is-revealed {
+  animation: hx-absorb 1.5s var(--ease) both;
+}
+.hxblock--work2.is-revealed {
+  animation: hx-grow 0.95s var(--ease) both;
+}
+
+@keyframes hx-absorb {
+  0%,
+  58% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  78% {
+    opacity: 1;
+    transform: scaleX(1.14);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes hx-grow {
+  0% {
+    opacity: 1;
+    flex-basis: 0%;
+  }
+  100% {
+    opacity: 1;
+    flex-basis: 66%;
+  }
+}
+
+/* ---- Chips-archivo: viajan de una ventana a otra y son absorbidos ---- */
+.hxfile {
+  position: absolute;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px 4px 7px;
+  background: var(--bg);
+  border: 1px solid var(--indigo);
+  border-radius: 999px;
+  box-shadow: 0 10px 26px -10px rgba(79, 70, 229, 0.55);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--indigo-ink);
+  white-space: nowrap;
+}
+
+.hxfile__ic {
+  width: 13px;
+  height: 13px;
+  flex: 0 0 auto;
+}
+
+.hxfile--down {
+  left: 6px;
+  top: 40px;
+}
+
+.hxfile--up {
+  left: 70px;
+  top: 314px;
+  border-color: #14b8a6;
+  color: #14b8a6;
+  box-shadow: 0 10px 26px -10px rgba(20, 184, 166, 0.55);
+}
+
+.hxfile--down.is-revealed {
+  animation: hx-send 1.5s var(--ease) both;
+}
+.hxfile--up.is-revealed {
+  animation: hx-return 1.5s var(--ease) both;
+}
+
+/* Viaje de ida: emerge de la principal, baja, y se funde en el bloque receptor. */
+@keyframes hx-send {
+  0% {
+    opacity: 0;
+    transform: translate(0, -6px) scale(0.85);
+  }
+  18% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  72% {
+    opacity: 1;
+    transform: translate(0, 274px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, 280px) scale(0.5);
+  }
+}
+
+/* Viaje de vuelta: emerge de la secundaria, sube (con leve deriva), se funde. */
+@keyframes hx-return {
+  0% {
+    opacity: 0;
+    transform: translate(0, 6px) scale(0.85);
+  }
+  18% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  72% {
+    opacity: 1;
+    transform: translate(14px, -274px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(16px, -280px) scale(0.5);
+  }
+}
+
+/* ============================================================
+   Fork — las dos salidas malas
+   ============================================================ */
+.fork {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.75rem;
+}
+
+@media (max-width: 760px) {
+  .fork {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fork__card {
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--coral);
+  border-radius: 12px;
+  padding: 1.5rem 1.6rem;
+  background: var(--bg);
+}
+
+.fork__num {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--coral);
+  margin-bottom: 0.6rem;
+}
+
+.fork__head {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+}
+
+.fork__text {
+  font-size: 0.98rem;
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+
+/* ============================================================
+   Diagrama del flujo — stepper horizontal con revelado
+   ============================================================ */
+.flow {
+  margin-top: 3rem;
+}
+
+.flow__track {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.flow__track::before {
+  content: "";
+  position: absolute;
+  top: 13px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--line);
+  z-index: 0;
+}
+
+.flow__step {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  flex: 1;
+  text-align: center;
+  opacity: 0.28;
+  filter: grayscale(1);
+  transition: opacity 0.4s var(--ease), filter 0.4s var(--ease);
+}
+
+.flow__dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--ink-faint);
+  display: grid;
+  place-items: center;
+  transition: border-color 0.4s var(--ease), background 0.4s var(--ease),
+    transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+.flow__dot::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ink-faint);
+  transition: background 0.4s var(--ease);
+}
+
+.flow__name {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.flow__step.is-shown {
+  opacity: 1;
+  filter: grayscale(0);
+}
+
+.flow__step.is-shown .flow__dot {
+  border-color: var(--indigo);
+}
+
+.flow__step.is-shown .flow__dot::after {
+  background: var(--indigo);
+}
+
+.flow__step.is-active .flow__dot {
+  background: var(--indigo);
+  border-color: var(--indigo);
+  transform: scale(1.18);
+  box-shadow: 0 0 0 6px var(--indigo-tint);
+}
+
+.flow__step.is-active .flow__dot::after {
+  background: var(--bg);
+}
+
+.flow__step.is-active .flow__name {
+  font-weight: 700;
+  color: var(--indigo-ink);
+}
+
+.flow__detail {
+  display: grid;
+  margin-top: 3.25rem;
+  min-height: 9rem;
+}
+
+.flow__panel {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+  pointer-events: none;
+  max-width: 52ch;
+}
+
+.flow__panel.is-active {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.flow__skill {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--indigo-ink);
+  margin-bottom: 0.7rem;
+}
+
+.flow__panel p {
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+.flow__panel .accent {
+  font-weight: 600;
+}
+
+/* ============================================================
+   Barra de progreso del borde — motivo del flujo (acto 4)
+   ============================================================ */
+.flowbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  display: flex;
+  gap: 2px;
+  padding: 0 clamp(1.5rem, 4vw, 3rem);
+  z-index: 60;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+  pointer-events: none;
+}
+
+.flowbar.is-visible {
+  opacity: 1;
+}
+
+.flowbar__seg {
+  flex: 1;
+  height: 100%;
+  background: var(--line);
+  border-radius: 0 0 3px 3px;
+  transition: background 0.4s var(--ease);
+}
+
+.flowbar__seg.is-past {
+  background: var(--indigo-tint);
+}
+
+.flowbar__seg.is-active {
+  background: var(--indigo);
+}
+
+/* ============================================================
+   Chrome inferior — flechas, dots, contador
+   ============================================================ */
+.chrome {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 64px;
+  padding: 0 clamp(1.5rem, 4vw, 3rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 50;
+  user-select: none;
+}
+
+.chrome__arrows {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chrome__btn {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--bg);
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.chrome__btn:hover {
+  border-color: var(--indigo);
+  color: var(--indigo);
+}
+
+.chrome__btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.chrome__dots {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 60vw;
+}
+
+.chrome__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--line);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.chrome__dot:hover {
+  background: var(--ink-faint);
+}
+
+.chrome__dot.is-active {
+  background: var(--indigo);
+  transform: scale(1.25);
+}
+
+.chrome__counter {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.chrome__counter b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ---- Revelado por pasos (utilidad genérica) ---- */
+[data-step] {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+[data-step].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* ============================================================
+   Cuadrícula de slides (overview · tecla "G")
+   - Miniaturas = clones de cada .slide renderizados a tamaño-ventana
+     dentro de .grid__stage y encogidos con transform: scale().
+     Así los vw/vh resuelven igual que en la presentación real.
+   - Marcador único (borde índigo): "estás aquí" al abrir; se mueve
+     con ←/→. Enter/clic navega; Esc/G/clic-fuera cierra.
+   ============================================================ */
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100; /* sobre chrome (50) y flowbar (60) */
+  overflow-y: auto;
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  background: rgba(10, 10, 20, 0.85);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  animation: gridFade 0.18s var(--ease);
+}
+.grid-overlay[hidden] {
+  display: none;
+}
+
+@keyframes gridFade {
+  from {
+    opacity: 0;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, var(--cell-w, 240px));
+  gap: clamp(0.75rem, 1.5vw, 1.5rem);
+  align-content: start;
+  justify-content: center;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.grid__cell {
+  position: relative;
+  width: 100%;
+  height: var(--cell-h, 135px);
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background: var(--bg);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  transition: border-color 0.15s var(--ease), transform 0.15s var(--ease);
+}
+.grid__cell:hover {
+  border-color: var(--indigo-tint);
+}
+.grid__cell.is-current {
+  border-color: var(--indigo);
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.35), 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* El "lienzo" a tamaño-ventana que se encoge. Posición absoluta para no
+   ocupar layout (el transform no afecta al flujo). */
+.grid__stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  text-align: start; /* reset defensivo: que el clon herede como en el deck real */
+  transform: scale(var(--thumb-scale, 0.18));
+  transform-origin: top left;
+  pointer-events: none;
+}
+
+/* Forzar visible el clon sin la transición de opacidad del deck (evita flash) */
+.grid__stage .slide {
+  display: flex;
+  opacity: 1;
+  transition: none;
+  animation: none;
+}
+
+.grid__num {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  z-index: 2;
+  min-width: 1.5em;
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: rgba(10, 10, 20, 0.7);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-align: center;
+  pointer-events: none;
+}
+.grid__cell.is-current .grid__num {
+  background: var(--indigo);
+}
+
+/* ============================================================
+   Accesibilidad: respetar reduce-motion
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

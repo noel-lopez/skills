@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>No adoptes un framework SDD. Hazte el tuyo.</title>
+
+    <!-- Fuentes: Google Fonts con fallback local (definido en :root) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Barra de progreso del borde (motivo del flujo, acto 4) -->
+    <div class="flowbar" id="flowbar" aria-hidden="true">
+      <span class="flowbar__seg"></span>
+      <span class="flowbar__seg"></span>
+      <span class="flowbar__seg"></span>
+      <span class="flowbar__seg"></span>
+      <span class="flowbar__seg"></span>
+      <span class="flowbar__seg"></span>
+      <span class="flowbar__seg"></span>
+    </div>
+
+    <main class="deck" id="deck">
+      <!-- ============================================================
+           ACTO 1 · El gancho
+           ============================================================ -->
+
+      <!-- 1 · Portada -->
+      <section class="slide cover" data-steps="0">
+        <div class="slide__inner">
+          <h1 class="title title--hero">
+            No adoptes un framework SDD.<br />
+            Hazte el <span class="accent">tuyo</span>.
+          </h1>
+          <div class="cover__meta">
+            <span class="cover__rule"></span>
+            <span class="cover__name">Noel</span>
+            <span>·</span>
+            <span>Genially</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2 · El dolor compartido (la escena) -->
+      <section class="slide scene" data-steps="2">
+        <div class="slide__inner">
+          <div class="scene__beats">
+            <p class="scene__setup">La IA termina la implementación.</p>
+            <p class="scene__setup">Abres el diff…</p>
+            <p class="scene__punch" data-step="1">
+              y no es <span class="accent">para nada</span> lo que<br />
+              tenías en la cabeza.
+            </p>
+          </div>
+          <p class="lede" data-step="2">
+            Y por debajo, una inquietud: el oficio se erosiona mientras todos
+            celebran lo contrario.
+          </p>
+        </div>
+      </section>
+
+      <!-- 3 · El contexto -->
+      <section class="slide" data-steps="0">
+        <div class="slide__inner">
+          <p class="eyebrow">El contexto</p>
+          <h2 class="title title--section">
+            Todos venden <span class="accent">orden</span>. Casi nadie vende
+            entendimiento.
+          </h2>
+          <p class="lede">
+            Las redes están llenas de procesos que parecen rigurosos pero por
+            dentro son "dale al botón y reza". Y entonces llegaron los
+            frameworks que prometían poner orden: el <strong>spec-driven
+            development</strong>.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           ACTO 2 · El antagonista SDD
+           ============================================================ -->
+
+      <!-- 4 · Qué prometen -->
+      <section class="slide" data-steps="0">
+        <div class="slide__inner">
+          <p class="eyebrow">El antagonista</p>
+          <h2 class="title title--section">
+            Qué prometen los frameworks <span class="accent">SDD</span>
+          </h2>
+          <p class="lede">
+            spec-kit · OpenSpec · BMAD · Kiro · Tessl · superpowers… todos giran
+            sobre las mismas cuatro promesas.
+          </p>
+
+          <div class="cards">
+            <article class="card">
+              <span class="card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7" rx="1" />
+                  <rect x="14" y="3" width="7" height="7" rx="1" />
+                  <rect x="14" y="14" width="7" height="7" rx="1" />
+                  <rect x="3" y="14" width="7" height="7" rx="1" />
+                </svg>
+              </span>
+              <h3 class="card__label">Orden</h3>
+              <p class="card__text">Un proceso con fases claras en vez de ir improvisando.</p>
+            </article>
+
+            <article class="card">
+              <span class="card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="8" y1="13" x2="16" y2="13" />
+                  <line x1="8" y1="17" x2="14" y2="17" />
+                </svg>
+              </span>
+              <h3 class="card__label">Spec primero</h3>
+              <p class="card__text">La especificación como fuente de verdad antes del código.</p>
+            </article>
+
+            <article class="card">
+              <span class="card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m17 2 4 4-4 4" />
+                  <path d="M3 11v-1a4 4 0 0 1 4-4h14" />
+                  <path d="m7 22-4-4 4-4" />
+                  <path d="M21 13v1a4 4 0 0 1-4 4H3" />
+                </svg>
+              </span>
+              <h3 class="card__label">Determinismo</h3>
+              <p class="card__text">Resultados repetibles, no improvisación de la IA.</p>
+            </article>
+
+            <article class="card">
+              <span class="card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <circle cx="12" cy="12" r="6" />
+                  <circle cx="12" cy="12" r="2" />
+                </svg>
+              </span>
+              <h3 class="card__label">Alineamiento</h3>
+              <p class="card__text">Que la máquina construya lo que de verdad tienes en la cabeza.</p>
+            </article>
+          </div>
+
+          <p class="takeaway">
+            Promesas razonables. La pregunta es <strong>a qué precio</strong>.
+          </p>
+        </div>
+      </section>
+
+      <!-- 5 · El guiño honesto -->
+      <section class="slide" data-steps="0">
+        <div class="slide__inner">
+          <p class="eyebrow">Seamos justos</p>
+          <h2 class="title title--section">
+            Y muchos están<br />
+            <span class="accent">bien hechos</span>.
+          </h2>
+
+          <div class="cards cards--2">
+            <article class="card">
+              <span class="card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="m22 11-2 2 4 4" />
+                </svg>
+              </span>
+              <h3 class="card__label">El humano en el centro</h3>
+              <p class="card__text">
+                La mayoría no escribe una línea de código hasta que apruebas la
+                spec. Ahí aciertan.
+              </p>
+            </article>
+
+            <article class="card">
+              <span class="card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2 2 7l10 5 10-5-10-5Z" />
+                  <path d="m2 17 10 5 10-5" />
+                  <path d="m2 12 10 5 10-5" />
+                </svg>
+              </span>
+              <h3 class="card__label">Abiertos y personalizables</h3>
+              <p class="card__text">
+                Casi ninguno es una caja negra: puedes editar sus plantillas y
+                doblarlos.
+              </p>
+            </article>
+          </div>
+
+          <p class="takeaway">
+            Lo que me frena está en <strong>otro sitio</strong>, y cuesta más
+            verlo.
+          </p>
+        </div>
+      </section>
+
+      <!-- 6 · Las 3 críticas -->
+      <section class="slide" data-steps="3">
+        <div class="slide__inner">
+          <p class="eyebrow">Mi problema con ellos</p>
+          <h2 class="title title--section">
+            Tres cosas que<br />
+            no me <span class="accent">cuadran</span>
+          </h2>
+
+          <div class="crit">
+            <div class="crit__item" data-step="1">
+              <p class="crit__num">01</p>
+              <h3 class="crit__title">Ceremonia ≠ alineamiento</h3>
+              <p class="crit__text">
+                Una spec de 600 líneas que apruebas sin interiorizarla es un
+                sello de goma con apariencia de alineamiento.
+              </p>
+            </div>
+            <div class="crit__item" data-step="2">
+              <p class="crit__num">02</p>
+              <h3 class="crit__title">Donde son rígidos, duelen</h3>
+              <p class="crit__text">
+                Tocar la spec a mitad te obliga a regenerar en cascada. En el
+                extremo, el código se vuelve desechable y no determinista.
+              </p>
+            </div>
+            <div class="crit__item" data-step="3">
+              <p class="crit__num">03</p>
+              <h3 class="crit__title">Un flujo que no es tuyo</h3>
+              <p class="crit__text">
+                Un framework que no has construido no lo conoces a fondo, y por
+                eso no lo adaptas con soltura a cada tarea.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7 · El veredicto -->
+      <section class="slide slide--center" data-steps="0">
+        <div class="slide__inner">
+          <p class="eyebrow eyebrow--muted">El veredicto</p>
+          <p class="statement">
+            Vibe coding<br />
+            disfrazado de <span class="accent">SDD</span>.
+          </p>
+          <p class="lede">
+            Toda esa ceremonia optimiza el teatro y deja de lado lo que de
+            verdad importa: la calidad del alineamiento previo.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           ACTO 3 · La tesis
+           ============================================================ -->
+
+      <!-- 8 · El reparto humano / IA -->
+      <section class="slide" data-steps="0">
+        <div class="slide__inner">
+          <p class="eyebrow">La tesis</p>
+          <h2 class="title title--section title--wide">
+            El humano decide el diseño.<br />
+            La IA ejecuta los <span class="accent">detalles</span>.
+          </h2>
+
+          <div class="duo">
+            <div class="duo__col">
+              <p class="duo__eyebrow duo__eyebrow--accent">Tú decides</p>
+              <ul class="checklist checklist--good">
+                <li>Qué módulos existen</li>
+                <li>Qué responsabilidad tiene cada uno</li>
+                <li>Qué interfaz exponen</li>
+                <li>Cómo encajan entre sí</li>
+              </ul>
+            </div>
+            <div class="duo__divider"></div>
+            <div class="duo__col">
+              <p class="duo__eyebrow duo__eyebrow--ink">La IA ejecuta</p>
+              <ul class="checklist checklist--good">
+                <li>El cuerpo de las funciones</li>
+                <li>El algoritmo concreto</li>
+                <li>El manejo de cada edge case</li>
+                <li>El relleno, dentro del contrato</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9 · Cajas grises / deep modules -->
+      <section class="slide slide--top" data-steps="1" data-thumb-step="0">
+        <div class="slide__inner">
+          <p class="eyebrow">Cajas grises</p>
+          <h2 class="title title--section">
+            Cada módulo,<br />
+            una <span class="accent">caja gris</span>
+          </h2>
+
+          <div class="boxes">
+            <div class="boxes__mod">
+              <div class="boxes__face">interfaz</div>
+              <div class="boxes__fill">relleno · IA</div>
+            </div>
+            <span class="boxes__seam"></span>
+            <div class="boxes__mod">
+              <div class="boxes__face">interfaz</div>
+              <div class="boxes__fill">relleno · IA</div>
+            </div>
+            <span class="boxes__seam"></span>
+            <div class="boxes__mod">
+              <div class="boxes__face">interfaz</div>
+              <div class="boxes__fill">relleno · IA</div>
+            </div>
+          </div>
+
+          <div class="boxes__legend">
+            <span class="boxes__key">
+              <span class="boxes__swatch boxes__swatch--indigo"></span>
+              Tu atención: interfaces y costuras
+            </span>
+            <span class="boxes__key">
+              <span class="boxes__swatch boxes__swatch--gray"></span>
+              Trabajo de la IA: el relleno
+            </span>
+          </div>
+
+          <p class="takeaway">
+            «Los mejores módulos son <strong>profundos</strong>: mucha
+            funcionalidad tras una interfaz simple.» — John Ousterhout
+          </p>
+        </div>
+
+        <!-- Inciso (paso 1): el libro de Ousterhout + el ángulo de testing -->
+        <aside class="bookpop" data-step="1">
+          <div class="bookpop__card">
+            <img
+              class="bookpop__cover"
+              src="assets/aposd-cover.jpg"
+              alt="Portada de A Philosophy of Software Design, de John Ousterhout"
+            />
+            <div class="bookpop__body">
+              <p class="bookpop__title">A Philosophy of Software Design</p>
+              <p class="bookpop__author">John Ousterhout</p>
+              <p class="bookpop__text">
+                Lectura muy recomendable. La idea de los <em>deep modules</em> no
+                es nueva, pero la era de la IA la ha vuelto crucial: tú diseñas la
+                interfaz simple y la IA rellena la profundidad.
+              </p>
+              <p class="bookpop__text">
+                Y con tests se potencia aún más. Un módulo profundo se prueba por
+                su <strong>comportamiento</strong>, no por sus detalles: si le
+                pides <strong>TDD</strong> a la IA, los tests blindan la interfaz y
+                te dan confianza en lo que ha rellenado. Un mar de
+                <em>shallow modules</em> hace justo lo contrario: acabas probando
+                implementación.
+              </p>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- 10 · El alineamiento previo no es opcional -->
+      <section class="slide slide--top" data-steps="2">
+        <div class="slide__inner">
+          <p class="eyebrow">Si te llevas una sola cosa</p>
+          <h2 class="title title--section">
+            El alineamiento previo <span class="accent">no es opcional</span>
+          </h2>
+          <p class="lede">
+            Si no te alineas con la IA antes de implementar, lo que he visto
+            pasar es una de dos:
+          </p>
+
+          <div class="fork">
+            <div class="fork__card" data-step="1">
+              <p class="fork__num">SALIDA 1</p>
+              <h3 class="fork__head">Mal código en tu codebase</h3>
+              <p class="fork__text">
+                Compila, pasa la review por encima y dentro de unos meses te
+                duele, porque nadie decidió de verdad cómo debía ser.
+              </p>
+            </div>
+            <div class="fork__card" data-step="2">
+              <p class="fork__num">SALIDA 2</p>
+              <h3 class="fork__head">Iterar 20, 50, 100 veces</h3>
+              <p class="fork__text">
+                El tiempo que crees ahorrarte saltándote el alineamiento lo
+                pagas con creces peleándote después con el resultado.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           ACTO 4 · El flujo en acción
+           ============================================================ -->
+
+      <!-- 11 · El mapa completo -->
+      <section class="slide slide--top" data-steps="7">
+        <div class="slide__inner">
+          <p class="eyebrow">El flujo en acción</p>
+          <h2 class="title title--section">
+            Un mapa modular, no un <span class="accent">raíl</span>
+          </h2>
+
+          <div class="flow">
+            <div class="flow__track">
+              <div class="flow__step" data-stage="0">
+                <span class="flow__dot"></span>
+                <span class="flow__name">setup</span>
+              </div>
+              <div class="flow__step" data-stage="1">
+                <span class="flow__dot"></span>
+                <span class="flow__name">grill-me</span>
+              </div>
+              <div class="flow__step" data-stage="2">
+                <span class="flow__dot"></span>
+                <span class="flow__name">prototype</span>
+              </div>
+              <div class="flow__step" data-stage="3">
+                <span class="flow__dot"></span>
+                <span class="flow__name">to-prd/issues</span>
+              </div>
+              <div class="flow__step" data-stage="4">
+                <span class="flow__dot"></span>
+                <span class="flow__name">code</span>
+              </div>
+              <div class="flow__step" data-stage="5">
+                <span class="flow__dot"></span>
+                <span class="flow__name">check</span>
+              </div>
+              <div class="flow__step" data-stage="6">
+                <span class="flow__dot"></span>
+                <span class="flow__name">commit</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flow__detail">
+            <div class="flow__panel" data-intro>
+              <p>
+                Cada etapa es una <span class="accent">skill</span> que invocas
+                cuando la necesitas, no un proceso obligatorio de principio a
+                fin.
+              </p>
+            </div>
+            <div class="flow__panel" data-stage="0">
+              <p class="flow__skill">setup</p>
+              <p>El cimiento. Una vez por repo.</p>
+            </div>
+            <div class="flow__panel" data-stage="1">
+              <p class="flow__skill">grill-me</p>
+              <p>Alineamiento previo. El corazón.</p>
+            </div>
+            <div class="flow__panel" data-stage="2">
+              <p class="flow__skill">prototype</p>
+              <p>Tocar el diseño antes de comprometerse.</p>
+            </div>
+            <div class="flow__panel" data-stage="3">
+              <p class="flow__skill">to-prd → to-issues</p>
+              <p>Cerrar y trocear en vertical slices.</p>
+            </div>
+            <div class="flow__panel" data-stage="4">
+              <p class="flow__skill">code</p>
+              <p>La IA rellena las cajas grises.</p>
+            </div>
+            <div class="flow__panel" data-stage="5">
+              <p class="flow__skill">check</p>
+              <p>Endurecer en sesión fresca, anti-sesgo.</p>
+            </div>
+            <div class="flow__panel" data-stage="6">
+              <p class="flow__skill">commit</p>
+              <p>Commits atómicos, solo con tu OK.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12 · El cimiento: setup -->
+      <section class="slide" data-steps="0" data-flow="0">
+        <div class="slide__inner">
+          <p class="eyebrow">El cimiento</p>
+          <h2 class="title title--section title--wide">
+            <span class="accent">setup</span> — una vez por repo
+          </h2>
+          <p class="lede">
+            En vez de elegir entre a, b o c, es un proceso conversacional donde
+            cierras cómo quieres trabajar en <em>este</em> repo.
+          </p>
+
+          <div class="cards cards--2">
+            <article class="card">
+              <span class="card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z" />
+                </svg>
+              </span>
+              <h3 class="card__label">Captura tu flujo</h3>
+              <p class="card__text">
+                Tracker en GitHub, en markdown local, en Jira… se lo describes y
+                queda registrado.
+              </p>
+            </article>
+            <article class="card">
+              <span class="card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                </svg>
+              </span>
+              <h3 class="card__label">Escribe en CLAUDE.md</h3>
+              <p class="card__text">
+                El resto de skills lee ese archivo en cada sesión: ya saben dónde
+                vive todo sin que se lo digas.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 13 · grill-me -->
+      <section class="slide" data-steps="2" data-flow="1" data-thumb-step="0">
+        <div class="slide__inner">
+          <p class="eyebrow">El corazón del flujo</p>
+          <h2 class="title title--section">
+            <span class="accent">grill-me</span> — alinéate antes de tocar código
+          </h2>
+          <p class="lede">
+            Te interroga pregunta a pregunta hasta resolver cada rama del árbol
+            de decisiones. Incluso cuando producto ya refinó el <em>qué</em>: lo
+            usas para cerrar el <em>cómo</em> con la IA.
+          </p>
+          <p class="takeaway">
+            <strong>Recomendación:</strong> desactiva la <code>AskUserQuestion</code>
+            tool. En un grilling no quieres elegir A/B/C: quieres matizar,
+            mezclar y redirigir.
+          </p>
+        </div>
+
+        <!-- Inciso (paso 1): la skill grill-me tal cual + shoutout a Matt (paso 2) -->
+        <aside class="skillpop" data-step="1">
+          <div class="skillpop__stack">
+            <div class="skillfile">
+              <div class="skillfile__bar">
+                <span class="skillfile__dot"></span>
+                <span class="skillfile__dot"></span>
+                <span class="skillfile__dot"></span>
+                <span class="skillfile__name">grill-me/SKILL.md</span>
+              </div>
+              <div class="skillfile__body">
+                <p class="skillfile__fm">---</p>
+                <p><span class="skillfile__key">name:</span> grill-me</p>
+                <p>
+                  <span class="skillfile__key">description:</span> Interview the
+                  user relentlessly about a plan or design until reaching shared
+                  understanding, resolving each branch of the decision tree. Use
+                  when user wants to stress-test a plan, get grilled on their
+                  design, or mentions "grill me".
+                </p>
+                <p class="skillfile__fm">---</p>
+                <p class="skillfile__prose">
+                  Interview me relentlessly about every aspect of this plan until
+                  we reach a shared understanding. Walk down each branch of the
+                  design tree, resolving dependencies between decisions
+                  one-by-one. For each question, provide your recommended answer.
+                </p>
+                <p class="skillfile__prose">Ask the questions one at a time.</p>
+                <p class="skillfile__prose">
+                  If a question can be answered by exploring the codebase, explore
+                  the codebase instead.
+                </p>
+              </div>
+            </div>
+
+            <figure class="shout" data-step="2">
+              <span class="shout__avatar">
+                <img
+                  src="assets/matt-pocock.png"
+                  alt="Matt Pocock"
+                  onerror="this.style.display='none'"
+                />
+              </span>
+              <figcaption class="shout__cap">
+                <strong>Matt Pocock</strong>
+                esta skill es suya
+              </figcaption>
+            </figure>
+          </div>
+        </aside>
+      </section>
+
+      <!-- 14 · prototype -->
+      <section class="slide" data-steps="0" data-flow="2">
+        <div class="slide__inner">
+          <p class="eyebrow">Cuando dudo del diseño</p>
+          <h2 class="title title--section title--wide">
+            <span class="accent">prototype</span> — tócalo<br />
+            antes de comprometerte
+          </h2>
+          <p class="lede">
+            ¿Una duda real sobre el modelo de datos, una máquina de estados, cómo
+            debería sentirse una UI? Antes de seguir a ciegas monto un prototipo
+            <strong>desechable</strong>. Es una herramienta de pensamiento. El
+            código se tira.
+          </p>
+        </div>
+      </section>
+
+      <!-- 15 · to-prd → to-issues -->
+      <section class="slide" data-steps="0" data-flow="3">
+        <div class="slide__inner">
+          <p class="eyebrow">Cerrar y trocear</p>
+          <h2 class="title title--section">
+            <span class="accent">to-prd</span> → <span class="accent">to-issues</span>
+          </h2>
+
+          <div class="duo">
+            <div class="duo__col">
+              <p class="duo__eyebrow duo__eyebrow--ink">Capas horizontales</p>
+              <ul class="checklist checklist--bad">
+                <li>Primero toda la base de datos</li>
+                <li>Luego toda la API</li>
+                <li>Luego toda la UI</li>
+                <li>Nada se prueba hasta el final</li>
+              </ul>
+            </div>
+            <div class="duo__divider"></div>
+            <div class="duo__col">
+              <p class="duo__eyebrow duo__eyebrow--accent">Vertical slices</p>
+              <ul class="checklist checklist--good">
+                <li>Cada issue cruza todas las capas</li>
+                <li>Deja algo funcionando end-to-end</li>
+                <li>Comprobable de inmediato</li>
+                <li>Feedback loops mucho mejores</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 16 · code → check → commit -->
+      <section class="slide" data-steps="3" data-flow="4,5,6">
+        <div class="slide__inner">
+          <p class="eyebrow">El loop HITL · un issue cada vez</p>
+          <h2 class="title title--section title--wide">
+            <span class="accent">code</span> →
+            <span class="accent">check</span> →
+            <span class="accent">commit</span>
+          </h2>
+
+          <div class="terminal">
+            <!-- Una línea de fuente por comando: el espaciado lo controla el CSS,
+                 no el whitespace del HTML (evita que pre-wrap parta cada línea). -->
+            <p class="terminal__line" data-step="1"><span class="terminal__prompt">$</span><span class="terminal__cmd">/code #42</span><span class="terminal__comment"># la IA rellena · deja el árbol sucio, sin commit</span></p>
+            <p class="terminal__line" data-step="2"><span class="terminal__prompt">$</span><span class="terminal__cmd">/check #42</span><span class="terminal__comment"># sesión fresca anti-sesgo · arregla y endurece</span></p>
+            <p class="terminal__line" data-step="3"><span class="terminal__prompt">$</span><span class="terminal__cmd">/commit</span><span class="terminal__comment"># commits atómicos</span><span class="terminal__ok">→ solo con un OK literal</span></p>
+          </div>
+
+          <p class="takeaway">
+            Ni <code>code</code> ni <code>check</code> inventan qué es buen
+            código: beben de <strong>coding-standards</strong>, el listón común.
+          </p>
+        </div>
+      </section>
+
+      <!-- 17 · Las válvulas -->
+      <section class="slide" data-steps="0">
+        <div class="slide__inner">
+          <p class="eyebrow">Cuando algo se tuerce</p>
+          <h2 class="title title--section">Dos <span class="accent">maniobras</span></h2>
+
+          <div class="cards cards--2">
+            <article class="card">
+              <span class="card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 14 4 9 9 4" />
+                  <path d="M20 20v-7a4 4 0 0 0-4-4H4" />
+                </svg>
+              </span>
+              <h3 class="card__label">Volver atrás</h3>
+              <p class="card__text">
+                Si la duda toca el diseño, retrocedo a <code>grill-me</code> o
+                <code>prototype</code> y recierro la decisión antes de seguir.
+              </p>
+            </article>
+            <article class="card">
+              <span class="card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="8" y1="6" x2="21" y2="6" />
+                  <line x1="8" y1="12" x2="21" y2="12" />
+                  <line x1="8" y1="18" x2="16" y2="18" />
+                  <line x1="3" y1="6" x2="3.01" y2="6" />
+                  <line x1="3" y1="12" x2="3.01" y2="12" />
+                  <line x1="3" y1="18" x2="3.01" y2="18" />
+                </svg>
+              </span>
+              <h3 class="card__label">Encolar con to-issues</h3>
+              <p class="card__text">
+                ¿Trabajo nuevo pero separable? No descarrilo el issue actual:
+                creo uno que entra en la cola para después.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 18 · handoff -->
+      <section class="slide" data-steps="5" data-thumb-step="0">
+        <div class="slide__inner">
+          <p class="eyebrow">La skill más malinterpretada</p>
+          <h2 class="title title--section title--wide">
+            <span class="accent">handoff</span> — no es <code>/compact</code>
+          </h2>
+          <p class="lede">
+            Su trabajo es fabricar el <strong>contexto exacto</strong> que otra
+            sesión necesita para una tarea concreta. Comprimir lo que ya tienes
+            es otra cosa. Lo uso en las dos direcciones:
+          </p>
+
+          <div class="duo">
+            <div class="duo__col">
+              <p class="duo__eyebrow duo__eyebrow--accent">Hacia adelante →</p>
+              <p class="duo__text">
+                Arranco una sesión nueva con instrucciones y contexto a medida
+                para una tarea acotada.
+              </p>
+            </div>
+            <div class="duo__divider"></div>
+            <div class="duo__col">
+              <p class="duo__eyebrow duo__eyebrow--accent">← De vuelta</p>
+              <p class="duo__text">
+                Devuelvo solo las conclusiones a la sesión principal, sin
+                arrastrar el ruido del trabajo intermedio.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inciso (pasos 1-5): smart/dumb zone + el handoff bidireccional en vivo.
+             Beat 1 concepto (1 ventana) → beats 2-5 ejemplo (2 ventanas). -->
+        <aside class="hxpop" data-step="1">
+          <div class="hxpop__card">
+            <p class="hxpop__cap">
+              <span class="hxcap hxcap--concept">El límite de cada ventana</span>
+              <span class="hxcap hxcap--example" data-step="2">Cómo se construyó esta presentación</span>
+            </p>
+
+            <div class="hxstage">
+              <!-- Ventana principal (en beat 1, "la ventana de contexto" a secas) -->
+              <div class="hxwin hxwin--main">
+                <span class="hxwin__name" data-step="2">Sesión principal</span>
+                <div class="hxwin__bar">
+                  <div class="hxwin__smart">
+                    <div class="hxblock hxblock--work" data-step="2"><span class="hxblock__label">grill-me</span></div>
+                    <div class="hxblock hxblock--back" data-step="5"></div>
+                  </div>
+                  <span class="hxwin__split"></span>
+                  <span class="hx100k">100K</span>
+                  <span class="hxzone hxzone--smart">smart</span>
+                  <span class="hxzone hxzone--dumb">dumb</span>
+                </div>
+              </div>
+
+              <!-- Ventana secundaria -->
+              <div class="hxwin hxwin--sec" data-step="2">
+                <span class="hxwin__name">Sesión secundaria</span>
+                <div class="hxwin__bar">
+                  <div class="hxwin__smart">
+                    <div class="hxblock hxblock--brief" data-step="3"></div>
+                    <div class="hxblock hxblock--work2" data-step="4"><span class="hxblock__label">prototype</span></div>
+                  </div>
+                  <span class="hxwin__split"></span>
+                </div>
+              </div>
+
+              <!-- Archivos handoff que VIAJAN entre ventanas y son absorbidos -->
+              <div class="hxfile hxfile--down" data-step="3">
+                <svg class="hxfile__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="16" y1="13" x2="8" y2="13" />
+                  <line x1="16" y1="17" x2="8" y2="17" />
+                </svg>
+                <span class="hxfile__name">handoff.md</span>
+              </div>
+              <div class="hxfile hxfile--up" data-step="5">
+                <svg class="hxfile__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="16" y1="13" x2="8" y2="13" />
+                  <line x1="16" y1="17" x2="8" y2="17" />
+                </svg>
+                <span class="hxfile__name">handoff-2.md</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- 19 · La caja de herramientas -->
+      <section class="slide" data-steps="0">
+        <div class="slide__inner">
+          <p class="eyebrow">La caja de herramientas transversal</p>
+          <h2 class="title title--section">
+            Y el resto,<br />
+            <span class="accent">cuando hace falta</span>
+          </h2>
+
+          <div class="cards cards--3">
+            <article class="card">
+              <h3 class="card__label">zoom-out</h3>
+              <p class="card__text">"Explícamelo como si tuviera cinco años": sube de nivel antes de asentir a ciegas.</p>
+            </article>
+            <article class="card">
+              <h3 class="card__label">diagnose</h3>
+              <p class="card__text">Loop disciplinado para bugs difíciles: reproducir → minimizar → hipótesis → arreglar.</p>
+            </article>
+            <article class="card">
+              <h3 class="card__label">improve-codebase-architecture</h3>
+              <p class="card__text">Busca oportunidades de hacer los módulos más profundos.</p>
+            </article>
+            <article class="card">
+              <h3 class="card__label">coding-standards</h3>
+              <p class="card__text">El listón universal de buen código, reconciliado con las reglas del repo.</p>
+            </article>
+            <article class="card">
+              <h3 class="card__label">grill-with-docs</h3>
+              <p class="card__text">grill-me que además actualiza CONTEXT.md y los ADRs con el lenguaje del proyecto.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           ACTO 5 · El cierre
+           ============================================================ -->
+
+      <!-- 20 · En una frase -->
+      <section class="slide slide--center" data-steps="0">
+        <div class="slide__inner">
+          <p class="eyebrow eyebrow--muted">En una frase</p>
+          <div class="summary">
+            <p class="summary__beat">
+              Gasto mi atención en cerrar<br />
+              el <span class="accent">diseño</span> antes de implementar.
+            </p>
+            <span class="summary__sep"></span>
+            <p class="summary__beat summary__beat--ai">
+              La IA ejecuta los detalles<br />
+              dentro de un loop controlado<br />
+              donde el <span class="accent">OK final</span> es mío.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 21 · Hazte el tuyo (bookend) -->
+      <section class="slide slide--center" data-steps="1">
+        <div class="slide__inner">
+          <p class="statement">
+            Hazte el <span class="accent">tuyo</span>.
+          </p>
+          <p class="lede">
+            Más que un consejo práctico, es proteger<br />
+            tu forma de cuidar lo que construyes.
+          </p>
+          <p class="lede" data-step="1" style="color: var(--indigo-ink); font-weight: 600">
+            ¿Lo debatimos?
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- ========== Chrome inferior ========== -->
+    <nav class="chrome" aria-label="Navegación del deck">
+      <div class="chrome__arrows">
+        <button class="chrome__btn" id="prevBtn" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+        </button>
+        <button class="chrome__btn" id="nextBtn" aria-label="Siguiente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m9 18 6-6-6-6" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="chrome__dots" id="dots"></div>
+
+      <div class="chrome__counter">
+        <b id="counterCurrent">1</b> / <span id="counterTotal">21</span>
+      </div>
+    </nav>
+
+    <!-- Cuadrícula de slides (tecla "G") · miniaturas inyectadas en runtime -->
+    <div class="grid-overlay" id="gridOverlay" hidden>
+      <div class="grid" id="grid"></div>
+    </div>
+
+    <script src="slides.js"></script>
+  </body>
+</html>
