@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# Local-only deck assets (presented from disk, never published)
+docs/notes.html
+docs/PLAN.md
+docs/tools/
+docs/prototype-ui/
+
+# Dependencies
+**/node_modules/
