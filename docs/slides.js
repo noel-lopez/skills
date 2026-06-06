@@ -151,12 +151,30 @@
   }
 
   // ---- Vista de narrador ----
-  function openPresenter() {
+  // En producción (GitHub Pages) notes.html está gitignored: un visitante que
+  // pulse "P" no debe toparse con un 404. En local (file://) notes.html siempre
+  // está presente y fetch no es fiable, así que abrimos directo; sobre http(s)
+  // comprobamos que el archivo existe antes de abrir y, si no, no-op silencioso.
+  function spawnPresenter() {
     presenterWin = window.open(
       "notes.html",
       "presenter",
       "width=720,height=820"
     );
+  }
+
+  function openPresenter() {
+    if (window.location.protocol === "file:") {
+      spawnPresenter();
+      return;
+    }
+    fetch("notes.html", { method: "HEAD" })
+      .then((res) => {
+        if (res.ok) spawnPresenter();
+      })
+      .catch(() => {
+        /* sin notes.html en producción: la vista de narrador no existe */
+      });
   }
 
   function syncPresenter() {
