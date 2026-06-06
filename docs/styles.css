@@ -164,6 +164,12 @@ body {
   margin-right: auto;
 }
 
+/* La escena (slide 2) tiene una lede algo más larga: más ancho para que
+   quepa en dos líneas en vez de tres. */
+.scene .lede {
+  max-width: 60ch;
+}
+
 /* ============================================================
    Statement — frases contundentes (gancho, veredicto, cierre)
    ============================================================ */
