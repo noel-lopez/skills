@@ -1,40 +1,6 @@
 # No adoptes un framework de SDD. Hazte el tuyo.
 
-Este documento es dos cosas: un **índice** de para qué sirve cada skill, y la **guía de cómo las encadeno yo** en el día a día. Si vienes a usarlo como referencia, empieza por el flujo (más abajo) y vuelve al índice cuando necesites el detalle de una skill concreta.
-
-Referencia rápida de para qué sirve cada una:
-
-## Productivity
-
-- **grill-me**: te interroga a fondo sobre un plan, pregunta a pregunta.
-- **handoff**: resume la conversación en un doc de traspaso para otra sesión/agente.
-
-## Engineering
-
-- **setup-matt-pocock-skills**: configura el repo (tracker, labels, domain docs). Correr primero.
-- **grill-with-docs**: grill-me + actualiza `CONTEXT.md`/ADRs con el lenguaje del proyecto.
-- **to-prd**: convierte el contexto actual en un PRD y lo publica al tracker.
-- **to-issues**: parte un plan/PRD en issues por vertical slices y los publica.
-- **prototype**: prototipo desechable (terminal para lógica/estado, o variaciones de UI).
-- **tdd**: red-green-refactor para un cambio puntual y acotado, sin pasar por PRD ni issues.
-- **diagnose**: bucle disciplinado para bugs difíciles: reproducir → minimizar → hipótesis → instrumentar → arreglar → test de regresión. La clave es construir un feedback loop rápido y determinista.
-- **improve-codebase-architecture**: busca refactors para hacer módulos más profundos.
-- **coding-standards**: el listón universal de qué es buen código (deep modules, testabilidad, tests de comportamiento), reconciliado con las reglas del repo. Beben de él `code`/`check`; también se invoca suelta.
-- **zoom-out**: sube un nivel y te da un mapa de módulos y llamadores de una zona.
-
-## Flujo HITL propio (`code → check → commit`)
-
-Adaptación human-in-the-loop: un issue cada vez, manual, controlando los commits.
-
-- **code**: implementa un issue end-to-end (RGR donde encaja) y para dejando el árbol sucio: sin commit, push, rama ni cierre de issue. (`/code #N`)
-- **check**: en sesión fresca (anti-sesgo), revisa el `git diff HEAD` contra el issue: arregla bugs/edge-cases en sitio y escribe tests para romper, flaggea gaps de spec/scope al humano. Deja el árbol verde, no commitea. (`/check #N`)
-- **commit**: parte el árbol sucio en commits atómicos conventional y commitea solo con un OK literal. (`/commit`)
-
----
-
-# Mi flujo de trabajo con estas skills
-
-> Esta es la parte que de verdad importa. El índice de arriba te dice *qué* hace cada skill; esto te cuenta *cómo* las encadeno en el día a día. Está escrito para mí como guía, pero también para que cualquier compañero pueda copiar el flujo.
+Esta es la guía de cómo trabajo yo con IA: cómo encadeno una serie de *agent skills* en el día a día para llegar a la implementación con el diseño ya cerrado. Está escrita para mí, pero también para que cualquier compañero pueda copiar el flujo. No es una lista de comandos; es el *porqué* y el *cómo* de mi forma de trabajar.
 
 ## De dónde sale esto: principios, no la última moda
 
