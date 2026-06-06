@@ -1,0 +1,60 @@
+{
+  "pin": "",
+  "skills": [
+    {
+      "name": "grill-me",
+      "path": "skills/productivity/grill-me/SKILL.md",
+      "description": "Te interroga a fondo sobre un plan, pregunta a pregunta."
+    },
+    {
+      "name": "handoff",
+      "path": "skills/productivity/handoff/SKILL.md",
+      "description": "Resume la conversación en un doc de traspaso para otra sesión/agente."
+    },
+    {
+      "name": "setup-matt-pocock-skills",
+      "path": "skills/engineering/setup-matt-pocock-skills/SKILL.md",
+      "description": "Configura el repo (tracker, labels, domain docs). Correr primero."
+    },
+    {
+      "name": "grill-with-docs",
+      "path": "skills/engineering/grill-with-docs/SKILL.md",
+      "description": "grill-me + actualiza CONTEXT.md/ADRs con el lenguaje del proyecto."
+    },
+    {
+      "name": "to-prd",
+      "path": "skills/engineering/to-prd/SKILL.md",
+      "description": "Convierte el contexto actual en un PRD y lo publica al tracker."
+    },
+    {
+      "name": "to-issues",
+      "path": "skills/engineering/to-issues/SKILL.md",
+      "description": "Parte un plan/PRD en issues por vertical slices y los publica."
+    },
+    {
+      "name": "prototype",
+      "path": "skills/engineering/prototype/SKILL.md",
+      "description": "Prototipo desechable (terminal para lógica/estado, o variaciones de UI)."
+    },
+    {
+      "name": "tdd",
+      "path": "skills/engineering/tdd/SKILL.md",
+      "description": "Red-green-refactor con slices verticales, un test a la vez."
+    },
+    {
+      "name": "diagnose",
+      "path": "skills/engineering/diagnose/SKILL.md",
+      "description": "Bucle disciplinado para bugs difíciles: reproducir, minimizar, hipótesis, instrumentar, arreglar, test de regresión."
+    },
+    {
+      "name": "improve-codebase-architecture",
+      "path": "skills/engineering/improve-codebase-architecture/SKILL.md",
+      "description": "Busca refactors para hacer módulos más profundos."
+    },
+    {
+      "name": "zoom-out",
+      "path": "skills/engineering/zoom-out/SKILL.md",
+      "description": "Sube un nivel y te da un mapa de módulos y llamadores de una zona."
+    }
+  ]
+}
