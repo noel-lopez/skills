@@ -36,7 +36,7 @@ Como las skills de Matt van evolucionando, llevo una skill de proyecto, **`check
 
 ## Créditos
 
-Las skills de Matt Pocock que uso en el flujo son obra suya y viven en [github.com/mattpocock/skills](https://github.com/mattpocock/skills); se instalan con [skills.sh](https://skills.sh). Todo el crédito de ese trabajo es suyo. Mi aporte es el flujo (cómo encadeno las piezas), mis 4 skills del loop HITL (`build`, `improve`, `commit`, `coding-standards`) y la skill `check-upstream`.
+Las skills de Matt Pocock que uso en el flujo son obra suya y viven en [github.com/mattpocock/skills](https://github.com/mattpocock/skills). Todo el crédito de ese trabajo es suyo. Mi aporte es el flujo, mis 4 skills del loop HITL (`build`, `improve`, `commit`, `coding-standards`) y tratar de acercar todo esto a la comunidad hispanohablante.
 
 Gracias a Matt por estas skills y por ser de los pocos que defienden de verdad usar la IA sin bajar el listón. Buena parte de mi flujo no existiría sin su trabajo.
 
