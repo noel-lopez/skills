@@ -1,16 +1,16 @@
 ---
-name: check
-description: Review one issue's uncommitted implementation locally, pre-commit, in a fresh session for zero implementer bias. Reads the issue spec and `git diff HEAD`, applies the coding-standards bar, actively fixes bugs/edge-cases/quality in place and writes tests to break the code, then flags spec-coverage gaps and scope creep for the human instead of silently filling them. Leaves the tree green and never commits, pushes, branches, or touches GitHub. Use when the user runs `/check #N` (or an issue URL/path) on uncommitted changes that implement an issue, regardless of how they were produced.
+name: improve
+description: Review one issue's uncommitted implementation locally, pre-commit, in a fresh session for zero implementer bias. Reads the issue spec and `git diff HEAD`, applies the coding-standards bar, actively fixes bugs/edge-cases/quality in place and writes tests to break the code, then flags spec-coverage gaps and scope creep for the human instead of silently filling them. Leaves the tree green and never commits, pushes, branches, or touches GitHub. Use when the user runs `/improve #N` (or an issue URL/path) on uncommitted changes that implement an issue, regardless of how they were produced.
 disable-model-invocation: true
 ---
 
-# Check
+# Improve
 
 Review the uncommitted changes in the working tree against an issue —
 **locally, before any commit**. This is one deliberate step in a
 human-in-the-loop flow.
 
-**Argument:** an issue reference — `/check #N`, a URL, or a path, depending
+**Argument:** an issue reference — `/improve #N`, a URL, or a path, depending
 on the repo's tracker. Review **only** that issue's work.
 
 ## 1. Fetch the issue (the spec)

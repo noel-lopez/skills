@@ -1,15 +1,15 @@
 ---
-name: code
-description: Implement a single issue end-to-end and stop with the working tree dirty — no commit, no push, no branch, no issue close. Reads the repo's issue tracker convention to fetch the issue, loads project context, applies the coding-standards bar, and embodies red-green-refactor where feasible. Use when the user runs `/code #N` (or passes an issue URL/path) and wants one issue built but left uncommitted for deliberate review.
+name: build
+description: Implement a single issue end-to-end and stop with the working tree dirty — no commit, no push, no branch, no issue close. Reads the repo's issue tracker convention to fetch the issue, loads project context, applies the coding-standards bar, and embodies red-green-refactor where feasible. Use when the user runs `/build #N` (or passes an issue URL/path) and wants one issue built but left uncommitted for deliberate review.
 disable-model-invocation: true
 ---
 
-# Code
+# Build
 
 Build **one** issue end-to-end, then **stop and leave the working tree dirty**.
 This is one deliberate step in a human-in-the-loop flow.
 
-**Argument:** an issue reference — `/code #N`, a URL, or a path,
+**Argument:** an issue reference — `/build #N`, a URL, or a path,
 depending on the repo's tracker. Implement **only** that issue.
 
 ## 1. Fetch the issue

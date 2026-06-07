@@ -63,7 +63,7 @@ Casi siempre arranco con una sesión de grilling. Y ojo, no es ejecutar `/grill-
 
 El caso obvio es cuando llega una idea cruda y poco definida: el grilling me obliga a resolver cada rama del árbol de decisiones antes de comprometerme. Si además quiero que el acuerdo quede escrito en el lenguaje del proyecto, uso **`grill-with-docs`**, que de paso actualiza `CONTEXT.md` y los ADRs con las decisiones según se van cerrando.
 
-Pero el caso menos obvio, y donde más valor le saco, es **cuando producto ya me ha refinado la tarea**. Aunque no haya ninguna duda a nivel de usuario sobre *qué* hay que hacer, igualmente hago una sesión de grilling para alinearme con la IA sobre el *cómo* de la implementación. No es para decidir el producto; es para llegar a `code` con la **confianza** de que la IA y yo entendemos lo mismo. Ese rato de grilling me ahorra después horas de iterar código que no era lo que yo tenía en la cabeza. Es, literalmente, el take de arriba en acción: el alineamiento previo es lo que me evita las dos salidas malas, mal código o iterar sin fin.
+Pero el caso menos obvio, y donde más valor le saco, es **cuando producto ya me ha refinado la tarea**. Aunque no haya ninguna duda a nivel de usuario sobre *qué* hay que hacer, igualmente hago una sesión de grilling para alinearme con la IA sobre el *cómo* de la implementación. No es para decidir el producto; es para llegar a `build` con la **confianza** de que la IA y yo entendemos lo mismo. Ese rato de grilling me ahorra después horas de iterar código que no era lo que yo tenía en la cabeza. Es, literalmente, el take de arriba en acción: el alineamiento previo es lo que me evita las dos salidas malas, mal código o iterar sin fin.
 
 > **Recomendación: desactiva la `AskUserQuestion` tool.** Es la tool con la que Claude, en vez de preguntarte en texto abierto, te ofrece respuestas cerradas tipo A/B/C para que elijas. Yo la tengo apagada **en general** (no solo para grilling), y se hace añadiendo esto a tu `CLAUDE.md` (yo a nivel de usuario, en `~/.claude/CLAUDE.md`, para que aplique a todos los repos; también vale a nivel de proyecto si solo lo quieres ahí):
 >
@@ -87,21 +87,21 @@ El detalle que más me ha cambiado el flujo está aquí: `to-issues` instruye ex
 
 > Nota sobre el punto de entrada: no siempre empiezo en el paso 1. A veces llego con el contexto o el PRD ya hechos y entro directo a `to-issues` o incluso al loop de implementación. El recorrido es el mapa completo, no un peaje obligatorio.
 
-### 4. El loop HITL, un issue cada vez (`code → check → commit`)
+### 4. El loop HITL, un issue cada vez (`build → improve → commit`)
 
 Esta es la parte más propia y, a la vez, la más fácil de explicar. Es un loop deliberadamente manual, un issue cada vez, en el que yo controlo cada paso:
 
-- **`code`** (*"/code #N"*): implementa el issue end-to-end y **para dejando el árbol sucio**: sin commit, sin push, sin rama, sin cerrar el issue. La IA rellena las cajas grises.
-- **`check`** (*"/check #N"*): en **sesión fresca** (clave: anti-sesgo, no es la misma IA que escribió el código), revisa el `git diff HEAD` contra el issue. Y no se limita a "checkear": **actúa**, mejora el código activamente por su cuenta, arregla bugs y edge cases en el sitio y escribe tests para romper. Solo me sube a mí lo que no puede decidir sola: los gaps de spec o de scope, que me **flaggea** para que yo resuelva. Deja el árbol verde, pero no commitea.
+- **`build`** (*"/build #N"*): implementa el issue end-to-end y **para dejando el árbol sucio**: sin commit, sin push, sin rama, sin cerrar el issue. La IA rellena las cajas grises.
+- **`improve`** (*"/improve #N"*): en **sesión fresca** (clave: anti-sesgo, no es la misma IA que escribió el código), revisa el `git diff HEAD` contra el issue. Y no se limita a "checkear": **actúa**, mejora el código activamente por su cuenta, arregla bugs y edge cases en el sitio y escribe tests para romper. Solo me sube a mí lo que no puede decidir sola: los gaps de spec o de scope, que me **flaggea** para que yo resuelva. Deja el árbol verde, pero no commitea.
 - **`commit`** (*"/commit"*): parte el árbol sucio en commits atómicos *conventional* y solo commitea cuando le doy un OK literal.
 
-El reparto del paso 1 vuelve a aparecer aquí: la IA hace el trabajo de relleno (`code`) y el de endurecer y corregir ese código (`check`), pero las decisiones que importan (aceptar un gap de scope, dar el OK a los commits) siguen siendo mías.
+El reparto del paso 1 vuelve a aparecer aquí: la IA hace el trabajo de relleno (`build`) y el de endurecer y corregir ese código (`improve`), pero las decisiones que importan (aceptar un gap de scope, dar el OK a los commits) siguen siendo mías.
 
-Un detalle que comparten ambas: ni `code` ni `check` inventan qué es "buen código". Beben de un listón común, **`coding-standards`**, que es lo que les dice qué listón aplicar al escribir y al revisar. Lo explico en detalle en la caja de herramientas, porque también se usa por su cuenta.
+Un detalle que comparten ambas: ni `build` ni `improve` inventan qué es "buen código". Beben de un listón común, **`coding-standards`**, que es lo que les dice qué listón aplicar al escribir y al revisar. Lo explico en detalle en la caja de herramientas, porque también se usa por su cuenta.
 
 ## Las maniobras: cuando algo se tuerce
 
-El camino de arriba es el feliz, pero el día a día no es lineal. Cuando en pleno `code` o `check` me topo con un imprevisto, tengo dos maniobras según el tamaño del problema:
+El camino de arriba es el feliz, pero el día a día no es lineal. Cuando en pleno `build` o `improve` me topo con un imprevisto, tengo dos maniobras según el tamaño del problema:
 
 - **Volver atrás.** Si la duda toca el diseño, retrocedo a `grill-me` o `prototype` para recerrar la decisión antes de seguir. Mejor parar y realinear que arrastrar una arquitectura dudosa.
 - **Encolar con `to-issues`.** Si lo que aparece es trabajo nuevo pero separable (un refactor que se ve venir, un bug colateral), no descarrilo el issue actual: creo un issue que entra en la cola y se aborda después.
@@ -113,13 +113,13 @@ Estas skills no son un paso del recorrido sino compañeras de viaje que entran c
 - **`handoff`**: la más polivalente de todas, y la que más se malinterpreta. **No es un `/compact`**: no va de "comprimir" una sesión para que ocupe menos. Va de **fabricar el contexto exacto que necesita otra sesión para hacer una cosa concreta**. Lo uso en las dos direcciones: un handoff *hacia adelante* para arrancar una sesión nueva con instrucciones y contexto específicos para una tarea acotada; y luego, desde esa segunda sesión, otro handoff *de vuelta* (solo con las conclusiones) hacia la sesión principal de la que venía, para retomarla sin arrastrar todo el ruido del trabajo intermedio. Con un poco de creatividad le sacas muchísimo: es un mecanismo para mover contexto entre sesiones a voluntad, no un botón de "resumir".
 - **`zoom-out`**: mi botón de *"explícamelo como si tuviera cinco años"*. Cuando la IA me suelta algo que no conozco (un concepto, una librería, una parte del sistema), le pido un `zoom-out` para que suba de nivel y me lo explique en simple antes de seguir. Es para no asentir a ciegas.
 - **`diagnose`**: mi loop completo para fixear un bug: reproducir → minimizar → hipótesis → instrumentar → arreglar → test de regresión. Cuando algo está roto, no improviso; arranco `diagnose` y dejo que el método haga el trabajo.
-- **`tdd`**: la uso poco, y a propósito. En el recorrido normal el TDD ya vive dentro de `code` (tiene su propia mini-fase de red-green-refactor), así que no necesito la skill suelta. La saco solo para un **cambio puntual y muy acotado**: cuando quiero que la IA implemente algo pequeño respetando el ciclo TDD sin montar PRD, issues ni el resto del flujo. Es mi atajo para esos arreglos sueltos en los que el recorrido completo sobra pero el rigor de los tests no.
+- **`tdd`**: la uso poco, y a propósito. En el recorrido normal el TDD ya vive dentro de `build` (tiene su propia mini-fase de red-green-refactor), así que no necesito la skill suelta. La saco solo para un **cambio puntual y muy acotado**: cuando quiero que la IA implemente algo pequeño respetando el ciclo TDD sin montar PRD, issues ni el resto del flujo. Es mi atajo para esos arreglos sueltos en los que el recorrido completo sobra pero el rigor de los tests no.
 - **`improve-codebase-architecture`**: cuando quiero buscar oportunidades de hacer los módulos más profundos (coherente con la tesis de las cajas grises).
-- **`coding-standards`**: mi listón universal de qué es buen código: módulos profundos (*deep modules*), diseño para la testabilidad, tests que verifican comportamiento por la interfaz pública, mocking solo en las fronteras del sistema y *clean code* sin pasarse de listo. Lo primero que hace es **reconciliar ese listón con las reglas del propio repo** (`CONTEXT.md`, `docs/adr/`, `CLAUDE.md`/`AGENTS.md`): en caso de conflicto, gana el repo. Es de la que beben `code` y `check` para saber qué listón aplicar, pero, fiel a la modularidad, también la invoco suelta, como una conversación normal: *"¿qué opinas de esto teniendo en cuenta los `/coding-standards`?"*. Comparte tesis con `improve-codebase-architecture`: las cajas grises profundas son, literalmente, parte del listón.
+- **`coding-standards`**: mi listón universal de qué es buen código: módulos profundos (*deep modules*), diseño para la testabilidad, tests que verifican comportamiento por la interfaz pública, mocking solo en las fronteras del sistema y *clean code* sin pasarse de listo. Lo primero que hace es **reconciliar ese listón con las reglas del propio repo** (`CONTEXT.md`, `docs/adr/`, `CLAUDE.md`/`AGENTS.md`): en caso de conflicto, gana el repo. Es de la que beben `build` y `improve` para saber qué listón aplicar, pero, fiel a la modularidad, también la invoco suelta, como una conversación normal: *"¿qué opinas de esto teniendo en cuenta los `/coding-standards`?"*. Comparte tesis con `improve-codebase-architecture`: las cajas grises profundas son, literalmente, parte del listón.
 
 ## En una frase
 
-Gasto mi atención humana en cerrar las decisiones de diseño *antes* de implementar (grilling, prototipos, PRD/issues), trato cada módulo como una caja gris, y dejo que la IA ejecute los detalles dentro de un loop manual y controlado (`code → check → commit`) donde yo me reservo el OK final.
+Gasto mi atención humana en cerrar las decisiones de diseño *antes* de implementar (grilling, prototipos, PRD/issues), trato cada módulo como una caja gris, y dejo que la IA ejecute los detalles dentro de un loop manual y controlado (`build → improve → commit`) donde yo me reservo el OK final.
 
 ## Hazte el tuyo
 
@@ -134,7 +134,7 @@ La mayoría de las skills que aparecen en esta guía (`grill-me`, `grill-with-do
 Mi aporte propio es:
 
 - **El flujo**: cómo encadeno estas piezas en el día a día (esta guía).
-- **Mis 4 skills del loop HITL**: `code`, `check`, `commit` y `coding-standards`, una adaptación *human-in-the-loop* (un issue cada vez, controlando los commits) inspirada en el trabajo de Matt.
+- **Mis 4 skills del loop HITL**: `build`, `improve`, `commit` y `coding-standards`, una adaptación *human-in-the-loop* (un issue cada vez, controlando los commits) inspirada en el trabajo de Matt.
 - **`check-upstream`**: una skill de proyecto que vigila el repo de Matt y mantiene mi manifiesto al día cuando sus skills evolucionan.
 
 Gracias a Matt por estas skills y por ser de los pocos que defienden de verdad usar la IA sin bajar el listón. Buena parte de mi flujo no existiría sin su trabajo.

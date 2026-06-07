@@ -18,10 +18,10 @@ El desarrollo entero está en [`guide/workflow.md`](guide/workflow.md): por qué
 
 Las skills se instalan con [skills.sh](https://skills.sh). Dos conjuntos, dos comandos.
 
-**Mis 4 skills** (el loop HITL `code → check → commit` + el listón `coding-standards`):
+**Mis 4 skills** (el loop HITL `build → improve → commit` + el listón `coding-standards`):
 
 ```bash
-npx skills add noel-lopez/skills --skill code check commit coding-standards
+npx skills add noel-lopez/skills --skill build improve commit coding-standards
 ```
 
 **Las skills de Matt Pocock** que uso en el flujo (son de Matt Pocock; ver [créditos](#créditos)):
@@ -36,7 +36,7 @@ Como las skills de Matt van evolucionando, llevo una skill de proyecto, **`check
 
 ## Créditos
 
-Las skills de Matt Pocock que uso en el flujo son obra suya y viven en [github.com/mattpocock/skills](https://github.com/mattpocock/skills); se instalan con [skills.sh](https://skills.sh). Todo el crédito de ese trabajo es suyo. Mi aporte es el flujo (cómo encadeno las piezas), mis 4 skills del loop HITL (`code`, `check`, `commit`, `coding-standards`) y la skill `check-upstream`.
+Las skills de Matt Pocock que uso en el flujo son obra suya y viven en [github.com/mattpocock/skills](https://github.com/mattpocock/skills); se instalan con [skills.sh](https://skills.sh). Todo el crédito de ese trabajo es suyo. Mi aporte es el flujo (cómo encadeno las piezas), mis 4 skills del loop HITL (`build`, `improve`, `commit`, `coding-standards`) y la skill `check-upstream`.
 
 Gracias a Matt por estas skills y por ser de los pocos que defienden de verdad usar la IA sin bajar el listón. Buena parte de mi flujo no existiría sin su trabajo.
 
