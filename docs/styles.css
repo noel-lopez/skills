@@ -345,12 +345,43 @@ body {
 }
 
 .card {
+  position: relative;
   min-width: 0; /* evita que el contenido desborde la celda del grid */
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 1.5rem 1.35rem 1.45rem;
   background: var(--bg);
   transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+/* Atribución a Matt dentro de la tarjeta (skills suyas de la caja transversal) */
+.card--by .card__label {
+  padding-right: 2.6rem; /* reserva el hueco del avatar para que el título no lo pise */
+}
+
+/* Título largo (improve-codebase-architecture): una sola línea, fuente justa */
+.card .card__label--long {
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+
+.card__by {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.1rem;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--indigo);
+  box-shadow: 0 6px 16px -6px rgba(79, 70, 229, 0.5);
+}
+
+.card__by img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .card__icon {
@@ -876,17 +907,48 @@ body {
   color: #fff;
 }
 
-/* Shoutout a Matt Pocock (paso 2) */
-.shout {
+/* Atribución a Matt Pocock — firma fija, decoración base (sin step).
+   Misma posición en TODA slide cuya skill sea suya, anclada a los paddings.
+   Opción A (slide 13): avatar + rótulo. Opción B (resto): .byline--bare → solo avatar. */
+.byline {
+  position: absolute;
+  top: var(--pad-y);
+  right: var(--pad-x);
+  z-index: 5; /* sobre el contenido base, bajo el modal (40) y el chrome (50) */
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.7rem;
 }
 
-.shout__avatar {
+.byline__cap {
+  text-align: right;
+  font-size: 0.86rem;
+  line-height: 1.3;
+  color: var(--ink-soft);
+}
+
+.byline__pre {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.byline__cap strong {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.byline--bare .byline__cap {
+  display: none;
+}
+
+.byline__avatar {
   position: relative;
-  width: 60px;
-  height: 60px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   flex: 0 0 auto;
   display: grid;
@@ -895,34 +957,21 @@ body {
   color: #fff;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1rem;
   overflow: hidden;
   box-shadow: 0 10px 28px -10px rgba(79, 70, 229, 0.55);
 }
 
-.shout__avatar::after {
+.byline__avatar::after {
   content: "MP"; /* fallback si la foto no carga */
 }
 
-.shout__avatar img {
+.byline__avatar img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.shout__cap {
-  font-size: 0.98rem;
-  color: var(--ink-soft);
-  line-height: 1.35;
-}
-
-.shout__cap strong {
-  display: block;
-  font-family: var(--font-display);
-  font-weight: 600;
-  color: var(--ink);
 }
 
 /* ============================================================
