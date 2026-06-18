@@ -25,6 +25,16 @@
       "allowModelInvocation": true
     },
     {
+      "name": "grilling",
+      "path": "skills/productivity/grilling/SKILL.md",
+      "description": "Sub-skill: la sesión de interrogatorio en sí, rama a rama del árbol de diseño. Dependencia de grill-me y grill-with-docs."
+    },
+    {
+      "name": "domain-modeling",
+      "path": "skills/engineering/domain-modeling/SKILL.md",
+      "description": "Sub-skill: construye y afina el modelo de dominio (glosario, ADRs, lenguaje ubicuo). Dependencia de grill-with-docs."
+    },
+    {
       "name": "to-prd",
       "path": "skills/engineering/to-prd/SKILL.md",
       "description": "Convierte el contexto actual en un PRD y lo publica al tracker."
@@ -46,14 +56,19 @@
       "description": "Red-green-refactor con slices verticales, un test a la vez."
     },
     {
-      "name": "diagnose",
-      "path": "skills/engineering/diagnose/SKILL.md",
-      "description": "Bucle disciplinado para bugs difíciles: reproducir, minimizar, hipótesis, instrumentar, arreglar, test de regresión."
+      "name": "diagnosing-bugs",
+      "path": "skills/engineering/diagnosing-bugs/SKILL.md",
+      "description": "Bucle disciplinado para bugs difíciles y regresiones de rendimiento: construir un feedback loop, reproducir, minimizar, hipótesis, instrumentar, arreglar, test de regresión."
     },
     {
       "name": "improve-codebase-architecture",
       "path": "skills/engineering/improve-codebase-architecture/SKILL.md",
       "description": "Busca refactors para hacer módulos más profundos."
+    },
+    {
+      "name": "codebase-design",
+      "path": "skills/engineering/codebase-design/SKILL.md",
+      "description": "Sub-skill: vocabulario compartido de módulos profundos (interfaz, seam, testabilidad). Dependencia de tdd e improve-codebase-architecture."
     },
     {
       "name": "zoom-out",
