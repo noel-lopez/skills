@@ -4,12 +4,14 @@
     {
       "name": "grill-me",
       "path": "skills/productivity/grill-me/SKILL.md",
-      "description": "Te interroga a fondo sobre un plan, pregunta a pregunta."
+      "description": "Te interroga a fondo sobre un plan, pregunta a pregunta.",
+      "allowModelInvocation": true
     },
     {
       "name": "handoff",
       "path": "skills/productivity/handoff/SKILL.md",
-      "description": "Resume la conversación en un doc de traspaso para otra sesión/agente."
+      "description": "Resume la conversación en un doc de traspaso para otra sesión/agente.",
+      "allowModelInvocation": true
     },
     {
       "name": "setup-matt-pocock-skills",
@@ -19,7 +21,8 @@
     {
       "name": "grill-with-docs",
       "path": "skills/engineering/grill-with-docs/SKILL.md",
-      "description": "grill-me + actualiza CONTEXT.md/ADRs con el lenguaje del proyecto."
+      "description": "grill-me + actualiza CONTEXT.md/ADRs con el lenguaje del proyecto.",
+      "allowModelInvocation": true
     },
     {
       "name": "to-prd",
@@ -34,7 +37,8 @@
     {
       "name": "prototype",
       "path": "skills/engineering/prototype/SKILL.md",
-      "description": "Prototipo desechable (terminal para lógica/estado, o variaciones de UI)."
+      "description": "Prototipo desechable (terminal para lógica/estado, o variaciones de UI).",
+      "allowModelInvocation": true
     },
     {
       "name": "tdd",
