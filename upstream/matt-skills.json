@@ -56,5 +56,6 @@
       "path": "skills/engineering/zoom-out/SKILL.md",
       "description": "Sube un nivel y te da un mapa de módulos y llamadores de una zona."
     }
-  ]
+  ],
+  "pendingSha": "6eeb81b5fcfeeb5bd531dd47ab2f9f2bbea27461"
 }
