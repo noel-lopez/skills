@@ -59,7 +59,9 @@ Todo es posible porque el setup no impone un flujo: captura *el tuyo*.
 
 ### 1. Alinearme con la IA antes de tocar código (`grill-me`)
 
-Casi siempre arranco con una sesión de grilling. Y ojo, no es ejecutar `/grill-me` y ya está: estas skills son tan modulares que mis ejecuciones se parecen más a una conversación normal (*"vamos a hacer una sesión de `/grilling` para cerrar cómo vamos a estructurar este servicio"*) que a un comando seco. Fíjate en que ahí invoco `/grilling`, no `/grill-me`: `grill-me` es solo el punto de entrada explícito (lo primero del prompt) y por dentro no hace más que lanzar un grilling; cuando quiero traerlo a mitad de conversación o desde un handoff uso `/grilling`, que es la sub-skill que el modelo sí puede autoinvocar.
+Casi siempre arranco con una sesión de grilling. Y ojo, no es ejecutar `/grill-me` y ya está: estas skills son tan modulares que mis ejecuciones se parecen más a una conversación normal (*"`/grill-me` sobre cómo vamos a estructurar este servicio, con el objetivo de cerrar la interfaz entre capas antes de tocar código"*) que a un comando seco.
+
+Un apunte de mecánica: `grill-me` tiene que ir **al principio del prompt** para que dispare. Si lo quieres a mitad de un mensaje, o lanzarlo desde un documento de handoff, usa `/grilling` en su lugar —es la sub-skill que `grill-me` ejecuta por dentro, y esa sí el modelo la puede autoinvocar en cualquier punto.
 
 El caso obvio es cuando llega una idea cruda y poco definida: el grilling me obliga a resolver cada rama del árbol de decisiones antes de comprometerme. Si además quiero que el acuerdo quede escrito en el lenguaje del proyecto, uso **`grill-with-docs`**, que de paso actualiza `CONTEXT.md` y los ADRs con las decisiones según se van cerrando.
 
