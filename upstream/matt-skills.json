@@ -1,15 +1,16 @@
 {
-  "pin": "be55a7970319ede7965edbb02b5e41cba1ca82c9",
+  "pin": "6eeb81b5fcfeeb5bd531dd47ab2f9f2bbea27461",
   "skills": [
     {
       "name": "grill-me",
       "path": "skills/productivity/grill-me/SKILL.md",
-      "description": "Te interroga a fondo sobre un plan, pregunta a pregunta."
+      "description": "Te interroga a fondo sobre un plan, pregunta a pregunta. Wrapper de grilling: para uso conversacional invoca grilling, que sí es autoinvocable."
     },
     {
       "name": "handoff",
       "path": "skills/productivity/handoff/SKILL.md",
-      "description": "Resume la conversación en un doc de traspaso para otra sesión/agente."
+      "description": "Resume la conversación en un doc de traspaso para otra sesión/agente.",
+      "allowModelInvocation": true
     },
     {
       "name": "setup-matt-pocock-skills",
@@ -19,7 +20,18 @@
     {
       "name": "grill-with-docs",
       "path": "skills/engineering/grill-with-docs/SKILL.md",
-      "description": "grill-me + actualiza CONTEXT.md/ADRs con el lenguaje del proyecto."
+      "description": "grill-me + actualiza CONTEXT.md/ADRs con el lenguaje del proyecto.",
+      "allowModelInvocation": true
+    },
+    {
+      "name": "grilling",
+      "path": "skills/productivity/grilling/SKILL.md",
+      "description": "Sub-skill: la sesión de interrogatorio en sí, rama a rama del árbol de diseño. Dependencia de grill-me y grill-with-docs."
+    },
+    {
+      "name": "domain-modeling",
+      "path": "skills/engineering/domain-modeling/SKILL.md",
+      "description": "Sub-skill: construye y afina el modelo de dominio (glosario, ADRs, lenguaje ubicuo). Dependencia de grill-with-docs."
     },
     {
       "name": "to-prd",
@@ -34,7 +46,8 @@
     {
       "name": "prototype",
       "path": "skills/engineering/prototype/SKILL.md",
-      "description": "Prototipo desechable (terminal para lógica/estado, o variaciones de UI)."
+      "description": "Prototipo desechable (terminal para lógica/estado, o variaciones de UI).",
+      "allowModelInvocation": true
     },
     {
       "name": "tdd",
@@ -42,9 +55,9 @@
       "description": "Red-green-refactor con slices verticales, un test a la vez."
     },
     {
-      "name": "diagnose",
-      "path": "skills/engineering/diagnose/SKILL.md",
-      "description": "Bucle disciplinado para bugs difíciles: reproducir, minimizar, hipótesis, instrumentar, arreglar, test de regresión."
+      "name": "diagnosing-bugs",
+      "path": "skills/engineering/diagnosing-bugs/SKILL.md",
+      "description": "Bucle disciplinado para bugs difíciles y regresiones de rendimiento: construir un feedback loop, reproducir, minimizar, hipótesis, instrumentar, arreglar, test de regresión."
     },
     {
       "name": "improve-codebase-architecture",
@@ -52,9 +65,9 @@
       "description": "Busca refactors para hacer módulos más profundos."
     },
     {
-      "name": "zoom-out",
-      "path": "skills/engineering/zoom-out/SKILL.md",
-      "description": "Sube un nivel y te da un mapa de módulos y llamadores de una zona."
+      "name": "codebase-design",
+      "path": "skills/engineering/codebase-design/SKILL.md",
+      "description": "Sub-skill: vocabulario compartido de módulos profundos (interfaz, seam, testabilidad). Dependencia de tdd e improve-codebase-architecture."
     }
   ]
 }
