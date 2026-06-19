@@ -53,7 +53,7 @@ Lo importante es que **no es un "elige entre a, b o c"**, sino un **proceso conv
 
 Todo es posible porque el setup no impone un flujo: captura *el tuyo*.
 
-**¿Y cómo se enteran las demás skills?** El setup escribe un bloque `## Agent skills` en tu `CLAUDE.md`/`AGENTS.md` (con punteros a unos archivos bajo `docs/agents/` que detallan tracker, labels y layout de docs). Como ese archivo se carga en el contexto de **cada** sesión, cuando luego lanzas `to-issues`, `to-prd`, `diagnose` o cualquier otra, **ya saben dónde vive todo sin que tú se lo digas**. Configuras una vez; el resto del flujo lo da por sabido.
+**¿Y cómo se enteran las demás skills?** El setup escribe un bloque `## Agent skills` en tu `CLAUDE.md`/`AGENTS.md` (con punteros a unos archivos bajo `docs/agents/` que detallan tracker, labels y layout de docs). Como ese archivo se carga en el contexto de **cada** sesión, cuando luego lanzas `to-issues`, `to-prd`, `diagnosing-bugs` o cualquier otra, **ya saben dónde vive todo sin que tú se lo digas**. Configuras una vez; el resto del flujo lo da por sabido.
 
 ## El recorrido (camino feliz)
 
@@ -112,7 +112,7 @@ Estas skills no son un paso del recorrido sino compañeras de viaje que entran c
 
 - **`handoff`**: la más polivalente de todas, y la que más se malinterpreta. **No es un `/compact`**: no va de "comprimir" una sesión para que ocupe menos. Va de **fabricar el contexto exacto que necesita otra sesión para hacer una cosa concreta**. Lo uso en las dos direcciones: un handoff *hacia adelante* para arrancar una sesión nueva con instrucciones y contexto específicos para una tarea acotada; y luego, desde esa segunda sesión, otro handoff *de vuelta* (solo con las conclusiones) hacia la sesión principal de la que venía, para retomarla sin arrastrar todo el ruido del trabajo intermedio. Con un poco de creatividad le sacas muchísimo: es un mecanismo para mover contexto entre sesiones a voluntad, no un botón de "resumir".
 - **`zoom-out`**: mi botón de *"explícamelo como si tuviera cinco años"*. Cuando la IA me suelta algo que no conozco (un concepto, una librería, una parte del sistema), le pido un `zoom-out` para que suba de nivel y me lo explique en simple antes de seguir. Es para no asentir a ciegas.
-- **`diagnose`**: mi loop completo para fixear un bug: reproducir → minimizar → hipótesis → instrumentar → arreglar → test de regresión. Cuando algo está roto, no improviso; arranco `diagnose` y dejo que el método haga el trabajo.
+- **`diagnosing-bugs`**: mi loop completo para fixear un bug: reproducir → minimizar → hipótesis → instrumentar → arreglar → test de regresión. Cuando algo está roto, no improviso; arranco `diagnosing-bugs` y dejo que el método haga el trabajo.
 - **`tdd`**: la uso poco, y a propósito. En el recorrido normal el TDD ya vive dentro de `build` (tiene su propia mini-fase de red-green-refactor), así que no necesito la skill suelta. La saco solo para un **cambio puntual y muy acotado**: cuando quiero que la IA implemente algo pequeño respetando el ciclo TDD sin montar PRD, issues ni el resto del flujo. Es mi atajo para esos arreglos sueltos en los que el recorrido completo sobra pero el rigor de los tests no.
 - **`improve-codebase-architecture`**: cuando quiero buscar oportunidades de hacer los módulos más profundos (coherente con la tesis de las cajas grises).
 - **`coding-standards`**: mi listón universal de qué es buen código: módulos profundos (*deep modules*), diseño para la testabilidad, tests que verifican comportamiento por la interfaz pública, mocking solo en las fronteras del sistema y *clean code* sin pasarse de listo. Lo primero que hace es **reconciliar ese listón con las reglas del propio repo** (`CONTEXT.md`, `docs/adr/`, `CLAUDE.md`/`AGENTS.md`): en caso de conflicto, gana el repo. Es de la que beben `build` y `improve` para saber qué listón aplicar, pero, fiel a la modularidad, también la invoco suelta, como una conversación normal: *"¿qué opinas de esto teniendo en cuenta los `/coding-standards`?"*. Comparte tesis con `improve-codebase-architecture`: las cajas grises profundas son, literalmente, parte del listón.
@@ -129,12 +129,13 @@ Si te llevas algo de todo esto, que no sea la lista de comandos: que sea la idea
 
 ## Créditos
 
-La mayoría de las skills que aparecen en esta guía (`grill-me`, `grill-with-docs`, `handoff`, `setup-matt-pocock-skills`, `to-prd`, `to-issues`, `prototype`, `tdd`, `diagnose`, `improve-codebase-architecture`, `zoom-out`) **son de [Matt Pocock](https://github.com/mattpocock)** y viven en su repo: **[github.com/mattpocock/skills](https://github.com/mattpocock/skills)**. Se instalan con [skills.sh](https://skills.sh) (`npx skills add mattpocock/skills --skill …`). Todo el crédito de ese trabajo es suyo; yo soy un usuario que las adoptó.
+La mayoría de las skills que aparecen en esta guía (`grill-me`, `grill-with-docs`, `handoff`, `setup-matt-pocock-skills`, `to-prd`, `to-issues`, `prototype`, `tdd`, `diagnosing-bugs`, `improve-codebase-architecture`) **son de [Matt Pocock](https://github.com/mattpocock)** y viven en su repo: **[github.com/mattpocock/skills](https://github.com/mattpocock/skills)**. Se instalan con [skills.sh](https://skills.sh) (`npx skills add mattpocock/skills --skill …`). Las uso verbatim; mi único delta es voltear `disable-model-invocation` con `scripts/patch-matt-skills.sh` para poder invocarlas conversacionalmente (el README lo explica). Todo el crédito de ese trabajo es suyo; yo soy un usuario que las adoptó.
 
 Mi aporte propio es:
 
 - **El flujo**: cómo encadeno estas piezas en el día a día (esta guía).
 - **Mis 4 skills del loop HITL**: `build`, `improve`, `commit` y `coding-standards`, una adaptación *human-in-the-loop* (un issue cada vez, controlando los commits) inspirada en el trabajo de Matt.
+- **`zoom-out`**: originalmente de Matt; cuando la retiró de su upstream la adopté y ahora la mantengo en mi repo.
 - **`check-upstream`**: una skill de proyecto que vigila el repo de Matt y mantiene mi manifiesto al día cuando sus skills evolucionan.
 
 Gracias a Matt por estas skills y por ser de los pocos que defienden de verdad usar la IA sin bajar el listón. Buena parte de mi flujo no existiría sin su trabajo.
