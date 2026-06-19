@@ -4,8 +4,7 @@
     {
       "name": "grill-me",
       "path": "skills/productivity/grill-me/SKILL.md",
-      "description": "Te interroga a fondo sobre un plan, pregunta a pregunta.",
-      "allowModelInvocation": true
+      "description": "Te interroga a fondo sobre un plan, pregunta a pregunta. Wrapper de grilling: para uso conversacional invoca grilling, que sí es autoinvocable."
     },
     {
       "name": "handoff",
