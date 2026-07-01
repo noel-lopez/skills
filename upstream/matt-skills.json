@@ -46,8 +46,7 @@
     {
       "name": "prototype",
       "path": "skills/engineering/prototype/SKILL.md",
-      "description": "Prototipo desechable (terminal para lógica/estado, o variaciones de UI).",
-      "allowModelInvocation": true
+      "description": "Prototipo desechable (terminal para lógica/estado, o variaciones de UI)."
     },
     {
       "name": "tdd",
