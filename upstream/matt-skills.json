@@ -67,6 +67,21 @@
       "name": "codebase-design",
       "path": "skills/engineering/codebase-design/SKILL.md",
       "description": "Sub-skill: vocabulario compartido de módulos profundos (interfaz, seam, testabilidad). Dependencia de tdd e improve-codebase-architecture."
+    },
+    {
+      "name": "teach",
+      "path": "skills/productivity/teach/SKILL.md",
+      "description": "Te enseña una skill o concepto nuevo dentro del workspace."
+    },
+    {
+      "name": "writing-great-skills",
+      "path": "skills/productivity/writing-great-skills/SKILL.md",
+      "description": "Referencia para escribir y editar skills: el vocabulario y los principios que las hacen predecibles."
+    },
+    {
+      "name": "wayfinder",
+      "path": "skills/in-progress/wayfinder/SKILL.md",
+      "description": "Planifica trabajo grande (más de una sesión) como un mapa de tickets de investigación en el tracker, resueltos uno a uno hasta despejar el camino. En in-progress en upstream."
     }
   ]
 }
