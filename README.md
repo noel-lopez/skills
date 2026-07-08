@@ -30,6 +30,12 @@ npx skills add noel-lopez/skills --skill build improve commit coding-standards z
 npx skills add mattpocock/skills --skill grill-me grilling grill-with-docs domain-modeling setup-matt-pocock-skills to-prd to-issues prototype tdd codebase-design diagnosing-bugs improve-codebase-architecture handoff
 ```
 
+**Fuera del flujo (experimentando).** Estas no forman parte del flujo documentado (ni en la guía ni en las slides): las tengo trackeadas solo para vigilar su evolución mientras las pruebo.
+
+```bash
+npx skills add mattpocock/skills --skill teach writing-great-skills wayfinder
+```
+
 ### Parche de invocación
 
 Matt marca casi todas sus skills con `disable-model-invocation: true`, lo que obliga a que el nombre de la skill sea lo primero del prompt: ni a mitad de mensaje, ni encadenadas, ni referenciadas desde un handoff. Como yo las uso de forma conversacional, reaplico mi único delta de preferencia con un script que voltea ese flag de `true` a `false` en las dos que invoco así (`grill-with-docs`, `handoff`), sin forkear ni tocar el cuerpo. Es idempotente: instala primero, parchea después.
