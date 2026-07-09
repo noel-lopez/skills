@@ -2,7 +2,7 @@
 
 ### Issue tracker
 
-Issues and PRDs live as GitHub issues, managed via the `gh` CLI. See `agent-docs/config/issue-tracker.md`.
+Issues and specs live as GitHub issues, managed via the `gh` CLI. See `agent-docs/config/issue-tracker.md`.
 
 ### Triage labels
 

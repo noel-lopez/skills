@@ -70,4 +70,4 @@ On OK:
 
 The pin advances for AUDIT 1 (main) only. It does not re-fetch (the OK may have
 taken a while; re-fetching would reopen the race). Queue agreed follow-ups
-separately (e.g. with `to-issues`) — the pin means "reviewed up to here", not "synced".
+separately (e.g. with `to-tickets`) — the pin means "reviewed up to here", not "synced".

@@ -83,7 +83,7 @@ Si en el grilling aparece una duda real sobre el modelo de datos, una máquina d
 
 ### 3. Dejar el trabajo cerrado y troceado (`to-spec` → `to-tickets`)
 
-Con el acuerdo cerrado, lo materializo. **`to-spec`** convierte el contexto de la conversación en una spec y lo publica al tracker. **`to-tickets`** parte ese plan en tickets, cada uno agarrable de forma independiente. A partir de aquí el "qué" ya está decidido y escrito; lo que queda es ejecutar.
+Con el acuerdo cerrado, lo materializo. **`to-spec`** convierte el contexto de la conversación en una spec y la publica al tracker. **`to-tickets`** parte ese plan en tickets, cada uno agarrable de forma independiente. A partir de aquí el "qué" ya está decidido y escrito; lo que queda es ejecutar.
 
 El detalle que más me ha cambiado el flujo está aquí: `to-tickets` instruye explícitamente a la IA para que trocee en **vertical slices** y no en horizontal. Esto es poco común (la IA, si no le dices lo contrario, **siempre** tiende a partir en capas horizontales: primero toda la base de datos, luego toda la API, luego toda la UI), y es justo lo que no quieres. Con slices verticales cada ticket cruza todas las capas y deja **algo funcionando end-to-end**. El resultado: mis *feedback loops* mejoraron muchísimo, porque cada ticket cerrado es una rebanada real y comprobable del producto, no media tubería que no se puede probar hasta que el resto exista.
 

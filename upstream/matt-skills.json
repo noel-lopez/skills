@@ -61,7 +61,7 @@
     {
       "name": "codebase-design",
       "path": "skills/engineering/codebase-design/SKILL.md",
-      "description": "Sub-skill: vocabulario compartido de módulos profundos (interfaz, seam, testabilidad). Dependencia de tdd e improve-codebase-architecture."
+      "description": "Sub-skill: vocabulario compartido de módulos profundos (interfaz, seam, testabilidad). Dependencia de improve-codebase-architecture."
     },
     {
       "name": "teach",
