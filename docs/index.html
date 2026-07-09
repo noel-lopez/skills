@@ -220,8 +220,9 @@
               <p class="crit__num">01</p>
               <h3 class="crit__title">Ceremonia ≠ alineamiento</h3>
               <p class="crit__text">
-                Una spec de 600 líneas que apruebas sin interiorizarla es un
-                sello de goma con apariencia de alineamiento.
+                Una spec de 600 líneas generada en cascada, que apruebas sin
+                interiorizarla, es un sello de goma con apariencia de
+                alineamiento.
               </p>
             </div>
             <div class="crit__item" data-step="2">
@@ -429,7 +430,7 @@
               </div>
               <div class="flow__step" data-stage="3">
                 <span class="flow__dot"></span>
-                <span class="flow__name">to-prd/issues</span>
+                <span class="flow__name">to-spec/tickets</span>
               </div>
               <div class="flow__step" data-stage="4">
                 <span class="flow__dot"></span>
@@ -467,8 +468,8 @@
               <p>Tocar el diseño antes de comprometerse.</p>
             </div>
             <div class="flow__panel" data-stage="3">
-              <p class="flow__skill">to-prd → to-issues</p>
-              <p>Cerrar y trocear en vertical slices.</p>
+              <p class="flow__skill">to-spec → to-tickets</p>
+              <p>Cerrar y trocear en tickets (vertical slices).</p>
             </div>
             <div class="flow__panel" data-stage="4">
               <p class="flow__skill">build</p>
@@ -639,7 +640,7 @@
         </div>
       </section>
 
-      <!-- 15 · to-prd → to-issues -->
+      <!-- 15 · to-spec → to-tickets -->
       <section class="slide" data-steps="0" data-flow="3">
         <!-- Atribución a Matt (decoración base, Opción B: solo avatar) -->
         <figure class="byline byline--bare">
@@ -655,7 +656,7 @@
         <div class="slide__inner">
           <p class="eyebrow">Cerrar y trocear</p>
           <h2 class="title title--section">
-            <span class="accent">to-prd</span> → <span class="accent">to-issues</span>
+            <span class="accent">to-spec</span> → <span class="accent">to-tickets</span>
           </h2>
 
           <div class="duo">
@@ -672,7 +673,7 @@
             <div class="duo__col">
               <p class="duo__eyebrow duo__eyebrow--accent">Vertical slices</p>
               <ul class="checklist checklist--good">
-                <li>Cada issue cruza todas las capas</li>
+                <li>Cada ticket cruza todas las capas</li>
                 <li>Deja algo funcionando end-to-end</li>
                 <li>Comprobable de inmediato</li>
                 <li>Feedback loops mucho mejores</li>
@@ -685,7 +686,7 @@
       <!-- 16 · build → improve → commit -->
       <section class="slide" data-steps="3" data-flow="4,5,6">
         <div class="slide__inner">
-          <p class="eyebrow">El loop HITL · un issue cada vez</p>
+          <p class="eyebrow">El loop HITL · un ticket cada vez</p>
           <h2 class="title title--section title--wide">
             <span class="accent">build</span> →
             <span class="accent">improve</span> →
@@ -738,9 +739,9 @@
                   <line x1="3" y1="18" x2="3.01" y2="18" />
                 </svg>
               </span>
-              <h3 class="card__label">Encolar con to-issues</h3>
+              <h3 class="card__label">Encolar con to-tickets</h3>
               <p class="card__text">
-                ¿Trabajo nuevo pero separable? No descarrilo el issue actual:
+                ¿Trabajo nuevo pero separable? No descarrilo el ticket actual:
                 creo uno que entra en la cola para después.
               </p>
             </article>

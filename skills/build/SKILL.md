@@ -1,29 +1,29 @@
 ---
 name: build
-description: Implement a single issue end-to-end and stop with the working tree dirty — no commit, no push, no branch, no issue close. Reads the repo's issue tracker convention to fetch the issue, loads project context, applies the coding-standards bar, and embodies red-green-refactor where feasible. Use when the user runs `/build #N` (or passes an issue URL/path) and wants one issue built but left uncommitted for deliberate review.
+description: Implement a single ticket end-to-end and stop with the working tree dirty — no commit, no push, no branch, no ticket close. Reads the repo's issue tracker convention to fetch the ticket, loads project context, applies the coding-standards bar, and embodies red-green-refactor where feasible. Use when the user runs `/build #N` (or passes a ticket URL/path) and wants one ticket built but left uncommitted for deliberate review.
 disable-model-invocation: true
 ---
 
 # Build
 
-Build **one** issue end-to-end, then **stop and leave the working tree dirty**.
+Build **one** ticket end-to-end, then **stop and leave the working tree dirty**.
 This is one deliberate step in a human-in-the-loop flow.
 
-**Argument:** an issue reference — `/build #N`, a URL, or a path,
-depending on the repo's tracker. Implement **only** that issue.
+**Argument:** a ticket reference — `/build #N`, a URL, or a path,
+depending on the repo's tracker. Implement **only** that ticket.
 
-## 1. Fetch the issue
+## 1. Fetch the ticket
 
 The issue tracker convention should already be in your context — run
-`/setup-matt-pocock-skills` if not. Fetch the given issue **with its full body
-and comments**, and pull in its parent PRD if it has one.
+`/setup-matt-pocock-skills` if not. Fetch the given ticket **with its full body
+and comments**, and pull in its parent spec if it has one.
 
 ## 2. Load context
 
 Before writing code, read the project's own bar and shape:
 
 - `CONTEXT.md`, `docs/adr/`, `CLAUDE.md` / `AGENTS.md`.
-- Explore the repo and fill context with the parts relevant to this issue —
+- Explore the repo and fill context with the parts relevant to this ticket —
   **especially the test files** that touch the area you'll change.
 
 ## 3. Apply the quality bar
@@ -33,7 +33,7 @@ code. Don't restate standards here — that skill owns them.
 
 ## 4. Implement (TDD where feasible)
 
-Derive the behaviors to build from the issue's **acceptance criteria**. Apply
+Derive the behaviors to build from the ticket's **acceptance criteria**. Apply
 red-green-refactor where it's feasible — one cycle at a time:
 
 1. **RED** — write one failing test for the next behavior.
@@ -42,15 +42,14 @@ red-green-refactor where it's feasible — one cycle at a time:
    write all the tests up front.
 4. **REFACTOR** — once green, clean up against the coding-standards bar.
 
-Embody this discipline directly. **Do not invoke the `tdd` skill** — its
-interactive planning gate isn't wanted here. Where TDD doesn't fit, just build
-it well; a later review pass is the safety net that adds tests.
+Embody this discipline directly. Where TDD doesn't fit, just build it well; a
+later review pass is the safety net that adds tests.
 
 ## 5. Autonomy & escalation
 
 Work autonomously — no plan-approval gate. Escalate to the user (**in prose, no
-interactive prompts**) **only** for a blocking ambiguity that neither the issue,
-its PRD, `CONTEXT.md`, nor the ADRs resolve. Don't guess blindly; don't ask
+interactive prompts**) **only** for a blocking ambiguity that neither the ticket,
+its spec, `CONTEXT.md`, nor the ADRs resolve. Don't guess blindly; don't ask
 about everything either.
 
 ## 6. Feedback loop
@@ -63,9 +62,9 @@ back to discovering them (`package.json` scripts, `Makefile`, README); don't ass
 
 ## 7. Stop — leave it dirty
 
-When the issue is done:
+When the ticket is done:
 
-- **Do NOT** commit, push, create a branch, or close the issue. Work on the
+- **Do NOT** commit, push, create a branch, or close the ticket. Work on the
   current branch; branches are the user's concern.
 - End with a short summary: what you built, key decisions, and the
   typecheck/test status.

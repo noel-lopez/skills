@@ -1,24 +1,24 @@
 ---
 name: improve
-description: Review one issue's uncommitted implementation locally, pre-commit, in a fresh session for zero implementer bias. Reads the issue spec and `git diff HEAD`, applies the coding-standards bar, actively fixes bugs/edge-cases/quality in place and writes tests to break the code, then flags spec-coverage gaps and scope creep for the human instead of silently filling them. Leaves the tree green and never commits, pushes, branches, or touches GitHub. Use when the user runs `/improve #N` (or an issue URL/path) on uncommitted changes that implement an issue, regardless of how they were produced.
+description: Review one ticket's uncommitted implementation locally, pre-commit, in a fresh session for zero implementer bias. Reads the ticket spec and `git diff HEAD`, applies the coding-standards bar, actively fixes bugs/edge-cases/quality in place and writes tests to break the code, then flags spec-coverage gaps and scope creep for the human instead of silently filling them. Leaves the tree green and never commits, pushes, branches, or touches GitHub. Use when the user runs `/improve #N` (or a ticket URL/path) on uncommitted changes that implement a ticket, regardless of how they were produced.
 disable-model-invocation: true
 ---
 
 # Improve
 
-Review the uncommitted changes in the working tree against an issue —
+Review the uncommitted changes in the working tree against a ticket —
 **locally, before any commit**. This is one deliberate step in a
 human-in-the-loop flow.
 
-**Argument:** an issue reference — `/improve #N`, a URL, or a path, depending
-on the repo's tracker. Review **only** that issue's work.
+**Argument:** a ticket reference — `/improve #N`, a URL, or a path, depending
+on the repo's tracker. Review **only** that ticket's work.
 
-## 1. Fetch the issue (the spec)
+## 1. Fetch the ticket (the spec)
 
 The issue tracker convention should already be in your context — run
-`/setup-matt-pocock-skills` if not. Fetch the given issue **with its full body
-and comments**. If it's a PRD with sub-issues, treat the body as the overall
-intent and each sub-issue as a sub-requirement. The issue is the spec you
+`/setup-matt-pocock-skills` if not. Fetch the given ticket **with its full body
+and comments**. If it's a spec with sub-tickets, treat the body as the overall
+intent and each sub-ticket as a sub-requirement. The ticket is the spec you
 review against.
 
 ## 2. Load the diff and context
@@ -56,7 +56,7 @@ You are not just commenting; you **improve the code**.
 - **Try to break it.** For anything dodgy — fragile logic, unchecked
   assumptions, tricky conditions, implicit coercions, missing guards — write a
   test that exercises it. If you can break it, **fix it**.
-- **If the issue is a bug report**, write a test that reproduces the original
+- **If the ticket is a bug report**, write a test that reproduces the original
   bug and confirm the diff actually fixes it.
 - **Stress edge cases** and add tests: empty/zero/negative inputs, missing
   optional fields, null/undefined, repeated or concurrent calls, off-by-one in
@@ -75,13 +75,13 @@ busy; only touch what genuinely needs it.
 
 ## 6. Verify the diff against the spec — flag, don't fill
 
-Walk the issue's stated outcomes and check the diff for:
+Walk the ticket's stated outcomes and check the diff for:
 
-- **Coverage** — does it do everything the issue asked? Note any stated outcome
+- **Coverage** — does it do everything the ticket asked? Note any stated outcome
   you can't find in the code.
-- **Scope** — does it do anything the issue did *not* ask for? Unrequested
-  refactors, drive-by changes, scope creep. For a PRD, code for an *open*
-  sub-issue is a scope violation.
+- **Scope** — does it do anything the ticket did *not* ask for? Unrequested
+  refactors, drive-by changes, scope creep. For a spec, code for an *open*
+  sub-ticket is a scope violation.
 - **Interpretation** — is an ambiguous requirement read sensibly? If you'd serve
   the stated goal better another way, say so.
 
