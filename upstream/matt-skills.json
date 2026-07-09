@@ -1,5 +1,5 @@
 {
-  "pin": "0877403d1e867fd9d574117e9b34ade404f36d2a",
+  "pin": "d574778f94cf620fcc8ce741584093bc650a61d3",
   "skills": [
     {
       "name": "grill-me",
@@ -34,24 +34,19 @@
       "description": "Sub-skill: construye y afina el modelo de dominio (glosario, ADRs, lenguaje ubicuo). Dependencia de grill-with-docs."
     },
     {
-      "name": "to-prd",
-      "path": "skills/engineering/to-prd/SKILL.md",
-      "description": "Convierte el contexto actual en un PRD y lo publica al tracker."
+      "name": "to-spec",
+      "path": "skills/engineering/to-spec/SKILL.md",
+      "description": "Convierte el contexto actual en una spec y la publica al tracker: sin entrevista, solo síntesis de lo ya hablado."
     },
     {
-      "name": "to-issues",
-      "path": "skills/engineering/to-issues/SKILL.md",
-      "description": "Parte un plan/PRD en issues por vertical slices y los publica."
+      "name": "to-tickets",
+      "path": "skills/engineering/to-tickets/SKILL.md",
+      "description": "Parte un plan, spec o conversación en tickets tracer-bullet (vertical slices), cada uno declarando sus blocking edges, y los publica al tracker."
     },
     {
       "name": "prototype",
       "path": "skills/engineering/prototype/SKILL.md",
       "description": "Prototipo desechable (terminal para lógica/estado, o variaciones de UI)."
-    },
-    {
-      "name": "tdd",
-      "path": "skills/engineering/tdd/SKILL.md",
-      "description": "Red-green-refactor con slices verticales, un test a la vez."
     },
     {
       "name": "diagnosing-bugs",
@@ -80,8 +75,8 @@
     },
     {
       "name": "wayfinder",
-      "path": "skills/in-progress/wayfinder/SKILL.md",
-      "description": "Planifica trabajo grande (más de una sesión) como un mapa de tickets de investigación en el tracker, resueltos uno a uno hasta despejar el camino. En in-progress en upstream."
+      "path": "skills/engineering/wayfinder/SKILL.md",
+      "description": "Planifica trabajo grande (más de una sesión) como un mapa de tickets de investigación en el tracker, resueltos uno a uno hasta despejar el camino."
     }
   ]
 }
