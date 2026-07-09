@@ -27,7 +27,7 @@ npx skills add noel-lopez/skills --skill build improve commit coding-standards z
 **Las skills de Matt Pocock** que uso en el flujo (son de Matt Pocock; ver [créditos](#créditos)):
 
 ```bash
-npx skills add mattpocock/skills --skill grill-me grilling grill-with-docs domain-modeling setup-matt-pocock-skills to-prd to-issues prototype tdd codebase-design diagnosing-bugs improve-codebase-architecture handoff
+npx skills add mattpocock/skills --skill grill-me grilling grill-with-docs domain-modeling setup-matt-pocock-skills to-spec to-tickets prototype codebase-design diagnosing-bugs improve-codebase-architecture handoff
 ```
 
 **Fuera del flujo (experimentando).** Estas no forman parte del flujo documentado (ni en la guía ni en las slides): las tengo trackeadas solo para vigilar su evolución mientras las pruebo.
