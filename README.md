@@ -33,7 +33,7 @@ npx skills add mattpocock/skills --skill grill-me grilling grill-with-docs domai
 **Fuera del flujo (experimentando).** Estas no forman parte del flujo documentado (ni en la guía ni en las slides): las tengo trackeadas solo para vigilar su evolución mientras las pruebo.
 
 ```bash
-npx skills add mattpocock/skills --skill teach writing-great-skills wayfinder
+npx skills add mattpocock/skills --skill teach writing-for-agents wayfinder research
 ```
 
 ### Parche de invocación

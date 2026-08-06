@@ -1,5 +1,5 @@
 {
-  "pin": "d574778f94cf620fcc8ce741584093bc650a61d3",
+  "pin": "8b36d4fb2635b3c21998dcd8144439c9e5ba7302",
   "skills": [
     {
       "name": "grill-me",
@@ -26,7 +26,7 @@
     {
       "name": "grilling",
       "path": "skills/productivity/grilling/SKILL.md",
-      "description": "Sub-skill: la sesión de interrogatorio en sí, rama a rama del árbol de diseño. Dependencia de grill-me y grill-with-docs."
+      "description": "Sub-skill: la sesión de interrogatorio en sí, por rondas de frontera del árbol de decisiones. Dependencia de grill-me y grill-with-docs."
     },
     {
       "name": "domain-modeling",
@@ -46,7 +46,7 @@
     {
       "name": "prototype",
       "path": "skills/engineering/prototype/SKILL.md",
-      "description": "Prototipo desechable (terminal para lógica/estado, o variaciones de UI)."
+      "description": "Prototipo desechable (HTML compartible para lógica/estado, o variaciones de UI)."
     },
     {
       "name": "diagnosing-bugs",
@@ -69,14 +69,19 @@
       "description": "Te enseña una skill o concepto nuevo dentro del workspace."
     },
     {
-      "name": "writing-great-skills",
-      "path": "skills/productivity/writing-great-skills/SKILL.md",
-      "description": "Referencia para escribir y editar skills: el vocabulario y los principios que las hacen predecibles."
+      "name": "writing-for-agents",
+      "path": "skills/productivity/writing-for-agents/SKILL.md",
+      "description": "Referencia para escribir cualquier documento que consume un agente (skills, AGENTS.md, CLAUDE.md): el vocabulario y los principios que lo hacen predecible. Sucesora de writing-great-skills."
     },
     {
       "name": "wayfinder",
       "path": "skills/engineering/wayfinder/SKILL.md",
-      "description": "Planifica trabajo grande (más de una sesión) como un mapa de tickets de investigación en el tracker, resueltos uno a uno hasta despejar el camino."
+      "description": "Planifica trabajo grande (más de una sesión) como un mapa de tickets de decisión en el tracker, resueltos uno a uno hasta despejar el camino."
+    },
+    {
+      "name": "research",
+      "path": "skills/engineering/research/SKILL.md",
+      "description": "Sub-skill: agente en background que investiga contra fuentes primarias y deja los hallazgos citados en un Markdown del repo. Dependencia de wayfinder."
     }
   ]
 }
