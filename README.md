@@ -16,12 +16,18 @@ El desarrollo entero está en [`guide/workflow.md`](guide/workflow.md): por qué
 
 ## Instalación
 
-Las skills se instalan con [skills.sh](https://skills.sh). Dos conjuntos, dos comandos.
+Las skills se instalan con [skills.sh](https://skills.sh). Tres conjuntos, tres comandos.
 
 **Mis 4 skills** (el loop HITL `build → improve → commit` + el listón `coding-standards`), más `zoom-out`, que adopté de Matt cuando la retiró de su upstream (ver [créditos](#créditos)):
 
 ```bash
 npx skills add noel-lopez/skills --skill build improve commit coding-standards zoom-out
+```
+
+**`walkthrough`**, fuera del loop: genera un HTML desechable que me explica un conjunto de cambios (working tree sucio, commits locales o una PR) y me guía la lectura en el orden que sigue el código, con enlaces que abren cada fichero en el IDE. No revisa ni opina; solo me sitúa antes de revisar.
+
+```bash
+npx skills add noel-lopez/skills --skill walkthrough
 ```
 
 **Las skills de Matt Pocock** que uso en el flujo (son de Matt Pocock; ver [créditos](#créditos)):
