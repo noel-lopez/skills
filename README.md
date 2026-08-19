@@ -16,7 +16,7 @@ El desarrollo entero está en [`guide/workflow.md`](guide/workflow.md): por qué
 
 ## Instalación
 
-Las skills se instalan con [skills.sh](https://skills.sh). Tres conjuntos, tres comandos.
+Las skills se instalan con [skills.sh](https://skills.sh). Cuatro conjuntos, cuatro comandos.
 
 **Mis 4 skills** (el loop HITL `build → improve → commit` + el listón `coding-standards`), más `zoom-out`, que adopté de Matt cuando la retiró de su upstream (ver [créditos](#créditos)):
 
@@ -28,6 +28,12 @@ npx skills add noel-lopez/skills --skill build improve commit coding-standards z
 
 ```bash
 npx skills add noel-lopez/skills --skill walkthrough
+```
+
+**`resolve-conflicts`**, también fuera del loop: resuelve los marcadores que deja un rebase, merge o cherry-pick decidiendo por intención (qué pretendía cada lado), y persigue los *silent breaks* que git nunca marca: el hunk que se auto-mergeó limpio y ya no compila. Orquesta también el rebase de un stack de ramas. Propone cada resolución con la evidencia que la respalda y no toca nada sin un OK explícito.
+
+```bash
+npx skills add noel-lopez/skills --skill resolve-conflicts
 ```
 
 **Las skills de Matt Pocock** que uso en el flujo (son de Matt Pocock; ver [créditos](#créditos)):
