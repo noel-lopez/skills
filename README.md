@@ -36,6 +36,12 @@ npx skills add noel-lopez/skills --skill walkthrough
 npx skills add noel-lopez/skills --skill resolve-conflicts
 ```
 
+**`prune-comments`**, fuera del loop: poda los comentarios del código recién implementado. Los modelos más capaces son justo los que más narran, y una regla en el `CLAUDE.md` no basta por sí sola. Aquí cada comentario recibe un veredicto bajo una sola pregunta: ¿perdería información un lector competente del código sin este comentario? Los que sobreviven se comprimen a una línea, y cuando borrar deja el código opaco se arregla el código en lugar de restaurar el comentario.
+
+```bash
+npx skills add noel-lopez/skills --skill prune-comments
+```
+
 **Las skills de Matt Pocock** que uso en el flujo (son de Matt Pocock; ver [créditos](#créditos)):
 
 ```bash
