@@ -9,8 +9,7 @@
     {
       "name": "handoff",
       "path": "skills/productivity/handoff/SKILL.md",
-      "description": "Resume la conversación en un doc de traspaso para otra sesión/agente.",
-      "allowModelInvocation": true
+      "description": "Resume la conversación en un doc de traspaso para otra sesión/agente."
     },
     {
       "name": "setup-matt-pocock-skills",
@@ -20,8 +19,7 @@
     {
       "name": "grill-with-docs",
       "path": "skills/engineering/grill-with-docs/SKILL.md",
-      "description": "grill-me + actualiza CONTEXT.md/ADRs con el lenguaje del proyecto.",
-      "allowModelInvocation": true
+      "description": "grill-me + actualiza CONTEXT.md/ADRs con el lenguaje del proyecto."
     },
     {
       "name": "grilling",
