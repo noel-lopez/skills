@@ -130,7 +130,7 @@ Si te llevas algo de todo esto, que no sea la lista de comandos: que sea la idea
 
 ## Créditos
 
-La mayoría de las skills que aparecen en esta guía (`grill-me`, `grill-with-docs`, `handoff`, `setup-matt-pocock-skills`, `to-spec`, `to-tickets`, `prototype`, `diagnosing-bugs`, `improve-codebase-architecture`) **son de [Matt Pocock](https://github.com/mattpocock)** y viven en su repo: **[github.com/mattpocock/skills](https://github.com/mattpocock/skills)**. Se instalan con [skills.sh](https://skills.sh) (`npx skills add mattpocock/skills --skill …`). Las uso verbatim; mi único delta es voltear `disable-model-invocation` con `scripts/patch-matt-skills.sh` para poder invocarlas conversacionalmente (el README lo explica). Todo el crédito de ese trabajo es suyo; yo soy un usuario que las adoptó.
+La mayoría de las skills que aparecen en esta guía (`grill-me`, `grill-with-docs`, `handoff`, `setup-matt-pocock-skills`, `to-spec`, `to-tickets`, `prototype`, `diagnosing-bugs`, `improve-codebase-architecture`) **son de [Matt Pocock](https://github.com/mattpocock)** y viven en su repo: **[github.com/mattpocock/skills](https://github.com/mattpocock/skills)**. Se instalan con [skills.sh](https://skills.sh) (`npx skills add mattpocock/skills --skill …`). Las uso verbatim, sin ningún delta local. Todo el crédito de ese trabajo es suyo; yo soy un usuario que las adoptó.
 
 Mi aporte propio es:
 

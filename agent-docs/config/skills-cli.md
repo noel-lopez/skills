@@ -37,9 +37,3 @@ rtk proxy npx -y skills@<version> remove -g -y <name>
 ```
 
 `update` reports skills that were deleted upstream (`appear to have been deleted upstream`) but leaves them installed in non-interactive mode. Finish the job with `remove`.
-
-## After installing or updating Matt's skills
-
-Run `./scripts/patch-matt-skills.sh`. It reapplies the only local delta — flipping `disable-model-invocation` to `false` on the skills invoked conversationally — reading the list from `upstream/matt-skills.json`. It is idempotent.
-
-`update` overwrites that flag, so the patch is owed after every update, not just after a fresh install.
