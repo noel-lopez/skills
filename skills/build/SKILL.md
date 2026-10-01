@@ -22,7 +22,7 @@ and comments**, and pull in its parent spec if it has one.
 
 Before writing code, read the project's own bar and shape:
 
-- `CONTEXT.md`, `docs/adr/`, `CLAUDE.md` / `AGENTS.md`.
+- `GLOSSARY.md`, `docs/adr/`, `CLAUDE.md` / `AGENTS.md`.
 - Explore the repo and fill context with the parts relevant to this ticket —
   **especially the test files** that touch the area you'll change.
 
@@ -49,7 +49,7 @@ later review pass is the safety net that adds tests.
 
 Work autonomously — no plan-approval gate. Escalate to the user (**in prose, no
 interactive prompts**) **only** for a blocking ambiguity that neither the ticket,
-its spec, `CONTEXT.md`, nor the ADRs resolve. Don't guess blindly; don't ask
+its spec, `GLOSSARY.md`, nor the ADRs resolve. Don't guess blindly; don't ask
 about everything either.
 
 ## 6. Feedback loop

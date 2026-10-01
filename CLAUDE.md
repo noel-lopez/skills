@@ -10,7 +10,7 @@ Five canonical triage roles, each mapped 1:1 to its default label string. See `a
 
 ### Domain docs
 
-Single-context: `agent-docs/CONTEXT.md` + `agent-docs/adr/`. See `agent-docs/config/domain.md`.
+Single-context: `agent-docs/GLOSSARY.md` + `agent-docs/adr/`. See `agent-docs/config/domain.md`.
 
 ### Skills CLI
 

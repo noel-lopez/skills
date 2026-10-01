@@ -26,7 +26,7 @@ review against.
 - **`git diff HEAD`** — the uncommitted changes in the working tree. **This is
   what you review.** When the diff references logic outside it, read the full
   files for real context — don't review a hunk in isolation.
-- `CONTEXT.md`, `docs/adr/`, `CLAUDE.md` / `AGENTS.md` — the repo's own bar and
+- `GLOSSARY.md`, `docs/adr/`, `CLAUDE.md` / `AGENTS.md` — the repo's own bar and
   shape.
 
 **Anti-bias:** review the diff on its own merits against the spec. There's no

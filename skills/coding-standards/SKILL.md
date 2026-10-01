@@ -1,6 +1,6 @@
 ---
 name: coding-standards
-description: The universal bar for good code — deep modules, design for testability, behavior-driven tests, mocking only at system boundaries, lean clean code. Use when writing, reviewing, refactoring, or judging the quality of any code, or when the user references coding standards, clean code, or deep modules. Reconciles this universal bar with the repo's own CONTEXT.md, docs/adr/, and CLAUDE.md/AGENTS.md.
+description: The universal bar for good code — deep modules, design for testability, behavior-driven tests, mocking only at system boundaries, lean clean code. Use when writing, reviewing, refactoring, or judging the quality of any code, or when the user references coding standards, clean code, or deep modules. Reconciles this universal bar with the repo's own GLOSSARY.md, docs/adr/, and CLAUDE.md/AGENTS.md.
 disable-model-invocation: false
 ---
 
@@ -13,7 +13,7 @@ The universal bar for what good code is.
 This bar is the universal floor. Layer the repo's own rules on top — on conflict,
 the repo wins:
 
-- `CONTEXT.md` — the project's domain language and shape.
+- `GLOSSARY.md` — the project's domain language and shape.
 - `docs/adr/` — recorded architectural decisions.
 - `CLAUDE.md` / `AGENTS.md` — explicit instructions for this repo.
 

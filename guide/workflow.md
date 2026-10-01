@@ -43,7 +43,7 @@ No hay una tercera vía mágica. Por eso, para mí, **el alineamiento previo es 
 
 ## El cimiento: `setup` (todas las demás beben de aquí)
 
-Antes del recorrido hay un paso que se hace **una vez por repo** y del que dependen todas las demás skills: **`setup-matt-pocock-skills`**. Es donde decides dónde viven las cosas de tu proyecto: tus **documentos de contexto** (`CONTEXT.md`, ADRs), tus **specs** y tus **tickets**.
+Antes del recorrido hay un paso que se hace **una vez por repo** y del que dependen todas las demás skills: **`setup-matt-pocock-skills`**. Es donde decides dónde viven las cosas de tu proyecto: tus **documentos de contexto** (`GLOSSARY.md`, ADRs), tus **specs** y tus **tickets**.
 
 Lo importante es que **no es un "elige entre a, b o c"**, sino un **proceso conversacional**: hablas con la IA sobre cómo quieres trabajar en *este* repo y juntos cerráis las decisiones. Eso es precisamente lo que hace que el resto de skills sean tan versátiles entre proyectos:
 
@@ -63,7 +63,7 @@ Casi siempre arranco con una sesión de grilling. Y ojo, no es ejecutar `/grill-
 
 Un apunte de mecánica: `grill-me` tiene que ir **al principio del prompt** para que dispare. Si lo quieres a mitad de un mensaje, o lanzarlo desde un documento de handoff, usa `/grilling` en su lugar —es la sub-skill que `grill-me` ejecuta por dentro, y esa sí el modelo la puede autoinvocar en cualquier punto.
 
-El caso obvio es cuando llega una idea cruda y poco definida: el grilling me obliga a resolver cada rama del árbol de decisiones antes de comprometerme. Si además quiero que el acuerdo quede escrito en el lenguaje del proyecto, uso **`grill-with-docs`**, que de paso actualiza `CONTEXT.md` y los ADRs con las decisiones según se van cerrando.
+El caso obvio es cuando llega una idea cruda y poco definida: el grilling me obliga a resolver cada rama del árbol de decisiones antes de comprometerme. Si además quiero que el acuerdo quede escrito en el lenguaje del proyecto, uso **`grill-with-docs`**, que de paso actualiza `GLOSSARY.md` y los ADRs con las decisiones según se van cerrando.
 
 Pero el caso menos obvio, y donde más valor le saco, es **cuando producto ya me ha refinado la tarea**. Aunque no haya ninguna duda a nivel de usuario sobre *qué* hay que hacer, igualmente hago una sesión de grilling para alinearme con la IA sobre el *cómo* de la implementación. No es para decidir el producto; es para llegar a `build` con la **confianza** de que la IA y yo entendemos lo mismo. Ese rato de grilling me ahorra después horas de iterar código que no era lo que yo tenía en la cabeza. Es, literalmente, el take de arriba en acción: el alineamiento previo es lo que me evita las dos salidas malas, mal código o iterar sin fin.
 
@@ -116,7 +116,7 @@ Estas skills no son un paso del recorrido sino compañeras de viaje que entran c
 - **`zoom-out`**: mi botón de *"explícamelo como si tuviera cinco años"*. Cuando la IA me suelta algo que no conozco (un concepto, una librería, una parte del sistema), le pido un `zoom-out` para que suba de nivel y me lo explique en simple antes de seguir. Es para no asentir a ciegas.
 - **`diagnosing-bugs`**: mi loop completo para fixear un bug: reproducir → minimizar → hipótesis → instrumentar → arreglar → test de regresión. Cuando algo está roto, no improviso; arranco `diagnosing-bugs` y dejo que el método haga el trabajo.
 - **`improve-codebase-architecture`**: cuando quiero buscar oportunidades de hacer los módulos más profundos (coherente con la tesis de las cajas grises).
-- **`coding-standards`**: mi listón universal de qué es buen código: módulos profundos (*deep modules*), diseño para la testabilidad, tests que verifican comportamiento por la interfaz pública, mocking solo en las fronteras del sistema y *clean code* sin pasarse de listo. Lo primero que hace es **reconciliar ese listón con las reglas del propio repo** (`CONTEXT.md`, `docs/adr/`, `CLAUDE.md`/`AGENTS.md`): en caso de conflicto, gana el repo. Es de la que beben `build` y `improve` para saber qué listón aplicar, pero, fiel a la modularidad, también la invoco suelta, como una conversación normal: *"¿qué opinas de esto teniendo en cuenta los `/coding-standards`?"*. Comparte tesis con `improve-codebase-architecture`: las cajas grises profundas son, literalmente, parte del listón.
+- **`coding-standards`**: mi listón universal de qué es buen código: módulos profundos (*deep modules*), diseño para la testabilidad, tests que verifican comportamiento por la interfaz pública, mocking solo en las fronteras del sistema y *clean code* sin pasarse de listo. Lo primero que hace es **reconciliar ese listón con las reglas del propio repo** (`GLOSSARY.md`, `docs/adr/`, `CLAUDE.md`/`AGENTS.md`): en caso de conflicto, gana el repo. Es de la que beben `build` y `improve` para saber qué listón aplicar, pero, fiel a la modularidad, también la invoco suelta, como una conversación normal: *"¿qué opinas de esto teniendo en cuenta los `/coding-standards`?"*. Comparte tesis con `improve-codebase-architecture`: las cajas grises profundas son, literalmente, parte del listón.
 
 ## En una frase
 
