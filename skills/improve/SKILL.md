@@ -1,7 +1,7 @@
 ---
 name: improve
-description: Review one ticket's uncommitted implementation locally, pre-commit, in a fresh session for zero implementer bias. Reads the ticket spec and `git diff HEAD`, applies the coding-standards bar, actively fixes bugs/edge-cases/quality in place and writes tests to break the code, then flags spec-coverage gaps and scope creep for the human instead of silently filling them. Leaves the tree green and never commits, pushes, branches, or touches GitHub. Use when the user runs `/improve #N` (or a ticket URL/path) on uncommitted changes that implement a ticket, regardless of how they were produced.
-disable-model-invocation: true
+description: "Review one ticket's uncommitted implementation in a fresh context: fix and harden in place, flag spec gaps for the human, never commit. Use for `/improve #N` (or a ticket URL/path)."
+disable-model-invocation: false
 ---
 
 # Improve
@@ -15,11 +15,11 @@ on the repo's tracker. Review **only** that ticket's work.
 
 ## 1. Fetch the ticket (the spec)
 
-The issue tracker convention should already be in your context — run
-`/setup-matt-pocock-skills` if not. Fetch the given ticket **with its full body
-and comments**. If it's a spec with sub-tickets, treat the body as the overall
-intent and each sub-ticket as a sub-requirement. The ticket is the spec you
-review against.
+The issue tracker convention should already be in your context. If it isn't,
+stop and report that `/setup-matt-pocock-skills` needs to run first. Fetch the
+given ticket **with its full body and comments**. If it's a spec with
+sub-tickets, treat the body as the overall intent and each sub-ticket as a
+sub-requirement. The ticket is the spec you review against.
 
 ## 2. Load the diff and context
 
@@ -96,7 +96,7 @@ Re-run the **same** typecheck and test commands from step 4 and leave them
 green. If you genuinely can't get there, say so clearly in the report — never
 hide a red tree.
 
-## 8. Report — in the terminal, in prose
+## 8. Report — in prose, to whoever invoked you
 
 End with a report covering: **what you changed and why** (fixes, hardening,
 refactors); **what you flagged but did NOT touch** (spec-coverage gaps, scope

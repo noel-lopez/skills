@@ -1,7 +1,7 @@
 ---
 name: build
-description: Implement a single ticket end-to-end and stop with the working tree dirty — no commit, no push, no branch, no ticket close. Reads the repo's issue tracker convention to fetch the ticket, loads project context, applies the coding-standards bar, and embodies red-green-refactor where feasible. Use when the user runs `/build #N` (or passes a ticket URL/path) and wants one ticket built but left uncommitted for deliberate review.
-disable-model-invocation: true
+description: "Implement one ticket end-to-end and leave the working tree dirty: no commit, push, branch, or ticket close. Use for `/build #N` (or a ticket URL/path)."
+disable-model-invocation: false
 ---
 
 # Build
@@ -14,9 +14,10 @@ depending on the repo's tracker. Implement **only** that ticket.
 
 ## 1. Fetch the ticket
 
-The issue tracker convention should already be in your context — run
-`/setup-matt-pocock-skills` if not. Fetch the given ticket **with its full body
-and comments**, and pull in its parent spec if it has one.
+The issue tracker convention should already be in your context. If it isn't,
+stop and report that `/setup-matt-pocock-skills` needs to run first. Fetch the
+given ticket **with its full body and comments**, and pull in its parent spec
+if it has one.
 
 ## 2. Load context
 
@@ -47,10 +48,12 @@ later review pass is the safety net that adds tests.
 
 ## 5. Autonomy & escalation
 
-Work autonomously — no plan-approval gate. Escalate to the user (**in prose, no
-interactive prompts**) **only** for a blocking ambiguity that neither the ticket,
-its spec, `GLOSSARY.md`, nor the ADRs resolve. Don't guess blindly; don't ask
-about everything either.
+Work autonomously — no plan-approval gate. Escalate to whoever invoked you (the
+user or an orchestrating agent), **in prose, no interactive prompts**, **only**
+for a blocking ambiguity that neither the ticket, its spec, `GLOSSARY.md`, nor
+the ADRs resolve. Don't guess blindly; don't ask about everything either. As a
+subagent, escalating means stopping and putting the open question in your
+final summary.
 
 ## 6. Feedback loop
 
