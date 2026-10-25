@@ -42,6 +42,12 @@ npx skills add noel-lopez/skills --skill resolve-conflicts
 npx skills add noel-lopez/skills --skill prune-comments
 ```
 
+**`github-pr`**, fuera del loop: abre la PR de la rama actual. Redacta el título en Conventional Commits y la descripción en español bajo tres encabezados fijos (`TLDR for humans`, `Problem`, `Solution`), detecta si la rama va apilada sobre otra PR tuya para proponerla como base, y no hace push ni crea nada en GitHub hasta que apruebas el borrador.
+
+```bash
+npx skills add noel-lopez/skills --skill github-pr
+```
+
 **Las skills de Matt Pocock** que uso en el flujo (son de Matt Pocock; ver [créditos](#créditos)):
 
 ```bash
