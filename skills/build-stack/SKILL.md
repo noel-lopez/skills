@@ -94,5 +94,18 @@ Report:
 - a red gate's failing command and its errors, in place of the links;
 - every stopped ticket with its unapplied branch and reason;
 - everything `improve` flagged;
-- every path left in `but diff` other than hook files;
-- a QA plan: per ticket, the manual checks on the top of the stack that exercise its acceptance criteria.
+- every path left in `but diff` other than hook files.
+
+## 9. Feedback
+
+The repo stays in workspace mode. For each piece of feedback on a PR:
+
+1. Resume that ticket's improve subagent with the message of [`briefs/feedback.md`](briefs/feedback.md).
+2. Match its `Files:` list, then `but commit -b <branch> -m "<message>" <hunk-ids>`: always a new commit on top of the branch, leaving published commits untouched.
+3. `but push <top-branch>`, without `--with-force` or `--skip-force-push-protection`.
+
+Done when `but status -fv` shows the new commit on its branch, the branches above restacked on it, and nothing left unpushed.
+
+## 10. Teardown
+
+Offer the teardown whenever the review looks finished, and run `but teardown --checkout-to <top-branch>` on the user's go-ahead. Report the local refs left behind: `gitbutler/workspace`, `gitbutler/target` and every stack branch.
