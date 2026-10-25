@@ -1,12 +1,12 @@
 ---
 name: build-stack
-description: "Take a spec from its link to a GitButler stack with one branch of atomic commits per ticket: subagents run build and improve in parallel along the blocker graph, the orchestrator writes every commit."
+description: "Take a spec from its link to a GitButler stack of draft PRs, one branch of atomic commits per ticket: subagents run build and improve in parallel along the blocker graph, the orchestrator writes every commit and opens the PRs behind a green gate."
 disable-model-invocation: true
 ---
 
 # Build stack
 
-Carry every ticket of a spec through `build` and `improve` subagents to atomic commits on its own branch of one GitButler stack. You are the **sole writer**: subagents implement, review and plan; you run every `but` write, one at a time, always naming file or hunk IDs. Invoking this skill is the user's explicit authorization for this run's `but` writes. The official `but` skill owns command syntax and IDs.
+Carry every ticket of a spec through `build` and `improve` subagents to atomic commits on its own branch of one GitButler stack, then open the stack as draft PRs. You are the **sole writer**: subagents implement, review and plan; you run every `but` write, one at a time, always naming file or hunk IDs. Invoking this skill is the user's explicit authorization for this run's `but` writes. The official `but` skill owns command syntax and IDs.
 
 ## 1. Preflight
 
@@ -72,11 +72,27 @@ For each stopped ticket:
 
 The rest of the spec keeps running.
 
-## 6. Summary
+## 6. Gate
+
+`but unapply` every stopped ticket's branch, so the working tree is the top of the stack. Run the repo's documented typecheck and test commands, scoped to the apps and packages the stack touches.
+
+Done when both are green. A red gate skips step 7.
+
+## 7. Pull requests
+
+Resume every stack ticket's improve subagent at once with the PR message of [`briefs/improve.md`](briefs/improve.md).
+
+Then, bottom-up: write the draft as its title line, a blank line and its description to a file outside the repo, so it never lands in `but diff`, and run `but pr new <branch> -F <file> --draft`.
+
+Done when `gh pr view <branch> --json isDraft,baseRefName` shows every stack branch as a draft whose base is the branch below it.
+
+## 8. Summary
 
 Report:
 
-- the stack bottom-up, each branch with its commits;
-- every stopped ticket with its branch and reason;
+- the stack bottom-up, the order to review it in, each branch with its PR link;
+- a red gate's failing command and its errors, in place of the links;
+- every stopped ticket with its unapplied branch and reason;
 - everything `improve` flagged;
-- every path left in `but diff` other than hook files.
+- every path left in `but diff` other than hook files;
+- a QA plan: per ticket, the manual checks on the top of the stack that exercise its acceptance criteria.
