@@ -94,8 +94,7 @@ Report:
 - a red gate's failing command and its errors, in place of the links;
 - every stopped ticket with its unapplied branch and reason;
 - everything `improve` flagged;
-- every path left in `but diff` other than hook files;
-- a QA plan: per ticket, the manual checks on the top of the stack that exercise its acceptance criteria.
+- every path left in `but diff` other than hook files.
 
 ## 9. Feedback
 
