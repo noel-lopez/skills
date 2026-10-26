@@ -80,6 +80,31 @@
       "name": "research",
       "path": "skills/engineering/research/SKILL.md",
       "description": "Sub-skill: agente en background que investiga contra fuentes primarias y deja los hallazgos citados en un Markdown del repo. Dependencia de wayfinder."
+    },
+    {
+      "name": "retro",
+      "path": "skills/engineering/retro/SKILL.md",
+      "description": "Retrospectiva de una sesión: propone mejoras al entorno del agente (navegación, checks automáticos, no-ops, gasto de tokens). Usa writing-for-agents."
+    },
+    {
+      "name": "wait-what",
+      "path": "skills/productivity/wait-what/SKILL.md",
+      "description": "El último mensaje no se entendió: que lo re-explique en inglés técnico simplificado con el lenguaje del GLOSSARY.md."
+    },
+    {
+      "name": "claude-handoff",
+      "path": "skills/in-progress/claude-handoff/SKILL.md",
+      "description": "Como handoff, pero además lanza un agente en background (claude --bg) que retoma el trabajo al momento."
+    },
+    {
+      "name": "to-questionnaire",
+      "path": "skills/productivity/to-questionnaire/SKILL.md",
+      "description": "Convierte una decisión que no puedes cerrar solo en un cuestionario Markdown para que otra persona lo rellene."
+    },
+    {
+      "name": "wizard",
+      "path": "skills/engineering/wizard/SKILL.md",
+      "description": "Genera un wizard en bash que guía a un humano por pasos que solo él puede hacer (credenciales, dashboards, secrets de CI, migraciones)."
     }
   ]
 }
