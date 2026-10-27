@@ -30,7 +30,7 @@ npx skills add noel-lopez/skills --skill build improve commit coding-standards z
 npx skills add noel-lopez/skills --skill walkthrough
 ```
 
-**`resolve-conflicts`**, también fuera del loop: resuelve los marcadores que deja un rebase, merge o cherry-pick decidiendo por intención (qué pretendía cada lado), y persigue los *silent breaks* que git nunca marca: el hunk que se auto-mergeó limpio y ya no compila. Orquesta también el rebase de un stack de ramas. Propone cada resolución con la evidencia que la respalda y no toca nada sin un OK explícito.
+**`resolve-conflicts`**, también fuera del loop: resuelve los marcadores que deja un rebase, merge o cherry-pick decidiendo por intención (qué pretendía cada lado), y persigue los *silent breaks* que git nunca marca: el hunk que se auto-mergeó limpio y ya no compila. Orquesta también el rebase de un stack de ramas. Solo te para en las decisiones: cada resolución, que propone con la evidencia que la respalda, y el push, que sube el stack entero de forma atómica. La mecánica entre una y otra corre sola.
 
 ```bash
 npx skills add noel-lopez/skills --skill resolve-conflicts

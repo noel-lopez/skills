@@ -24,7 +24,7 @@ git rebase --onto <rebased-branch-below> <old-head-of-that-branch> <upper-branch
 - **upstream** — the commits replayed are `upstream..branch`, so this is the branch below **as it was before its own rebase**.
 - **branch** — checked out for you, and `HEAD` returns to it when the rebase ends. No `checkout` first.
 
-Naming that old head is the whole trick. While the lower branch is still unpushed, `origin/<lower-branch>` names it; otherwise record the sha before rebasing it.
+Naming that old head is the whole trick: it is the sha recorded before the lower branch's rebase. That one sha serves twice — the upstream of the `--onto` here, and the lease of that branch in the atomic push.
 
 ## Why the two-argument form reconflicts
 
