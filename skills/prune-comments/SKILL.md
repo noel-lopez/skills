@@ -1,7 +1,7 @@
 ---
 name: prune-comments
-description: Prune the comments in freshly implemented code — every comment earns its place under one test, or it goes. Survivors compress to one line.
-disable-model-invocation: true
+description: "Prune the comments in freshly implemented code. Use for `/prune-comments` or when asked to clean up comments."
+disable-model-invocation: false
 ---
 
 # Prune Comments
