@@ -1,12 +1,12 @@
 ---
 name: build-stack
-description: "Take a spec from its link to a GitButler stack of draft PRs, one branch of atomic commits per ticket: subagents run build and improve in parallel along the blocker graph, the orchestrator writes every commit and opens the PRs behind a green gate."
+description: "Turn a spec into a GitButler stack of PRs, one branch per ticket."
 disable-model-invocation: true
 ---
 
 # Build stack
 
-Carry every ticket of a spec through `build` and `improve` subagents to atomic commits on its own branch of one GitButler stack, then open the stack as draft PRs. You are the **sole writer**: subagents implement, review and plan; you run every `but` write, one at a time, always naming file or hunk IDs. Invoking this skill is the user's explicit authorization for this run's `but` writes. The official `but` skill owns command syntax and IDs.
+Carry every ticket of a spec through `build` and `improve` subagents to atomic commits on its own branch of one GitButler stack, then open the stack as PRs assigned to the user. You are the **sole writer**: subagents implement, review and plan; you run every `but` write, one at a time, always naming file or hunk IDs. Invoking this skill is the user's explicit authorization for this run's `but` writes. The official `but` skill owns command syntax and IDs.
 
 ## 1. Preflight
 
@@ -80,15 +80,19 @@ The rest of the spec keeps running.
 
 `but unapply` every stopped ticket's branch, so the working tree is the top of the stack. Build the packages the stack touches, then run the repo's documented typecheck and test commands, scoped to the apps and packages it touches.
 
-Done when both are green. A red gate skips step 7.
+Done when every command is green. A red gate skips step 7.
 
 ## 7. Pull requests
 
 Resume every stack ticket's improve subagent at once with the PR message of [`briefs/improve.md`](briefs/improve.md).
 
-Then, bottom-up: write the draft as its title line, a blank line and its description to a file outside the repo, so it never lands in `but diff`, and run `but pr new <branch> -F <file> --draft`.
+Then, bottom-up, for each branch:
 
-Done when `gh pr view <branch> --json isDraft,baseRefName` shows every stack branch as a draft whose base is the branch below it.
+1. Write its PR message as the title line, a blank line and the description to a file outside the repo, so it never lands in `but diff`.
+2. `but pr new <branch> -F <file>`.
+3. `gh pr edit <branch> --add-assignee @me`.
+
+Done when `gh pr view <branch> --json assignees,baseRefName` shows every stack branch assigned to the user, with the branch below it as base.
 
 ## 8. Summary
 
