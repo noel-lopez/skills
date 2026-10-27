@@ -1,5 +1,7 @@
 # Feedback brief
 
+Append [`shared-directory.md`](shared-directory.md) verbatim to the message.
+
 ## Message
 
 Feedback on the PR of branch `<branch>`:

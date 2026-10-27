@@ -12,6 +12,8 @@ Carry every ticket of a spec through `build` and `improve` subagents to atomic c
 
 `git status --porcelain --untracked-files=all` must list only **hook files**: files whose content contains `GITBUTLER_MANAGED_HOOK_V1`. Anything else stops the run.
 
+Then run [`scripts/check-stale-stacks`](scripts/check-stale-stacks) from the repo root: any output stops the run, naming each stack it lists.
+
 Then run `but setup`.
 
 ## 2. Stack
@@ -25,6 +27,8 @@ Done when `but status` shows a single stack holding every branch in that order.
 ## 3. Schedule
 
 A ticket is **ready** when every blocker is satisfied. Launch the pipeline of every ready ticket at once, with no concurrency cap, each subagent in the background. A ticket is **in flight** from its launch until its atomic commits, and **claims** every path in the `Files:` lists it reports.
+
+An escalated **overlap** makes the ticket **wait on** the in-flight ticket whose `Files:` list claims that path, as one more blocker. If its branch sits below the blocker's, `but move <branch> --above <blocker-branch>`. Once that blocker is satisfied, resume the same subagent with "Overlap resolved: build on top." and its pipeline continues.
 
 Done when every ticket has its atomic commits or is stopped.
 
@@ -62,7 +66,7 @@ Done when `but status -fv` shows the branch carrying exactly the planned commits
 
 ## 5. Stopping a ticket
 
-A ticket stops when its subagent escalates a question or fails, when a match fails, or when one of its `but` writes fails.
+A ticket stops when its subagent escalates a product question or fails, when a match fails, or when one of its `but` writes fails.
 
 For each stopped ticket:
 
@@ -74,7 +78,7 @@ The rest of the spec keeps running.
 
 ## 6. Gate
 
-`but unapply` every stopped ticket's branch, so the working tree is the top of the stack. Run the repo's documented typecheck and test commands, scoped to the apps and packages the stack touches.
+`but unapply` every stopped ticket's branch, so the working tree is the top of the stack. Build the packages the stack touches, then run the repo's documented typecheck and test commands, scoped to the apps and packages it touches.
 
 Done when both are green. A red gate skips step 7.
 
@@ -108,4 +112,4 @@ Done when `but status -fv` shows the new commit on its branch, the branches abov
 
 ## 10. Teardown
 
-Offer the teardown whenever the review looks finished, and run `but teardown --checkout-to <top-branch>` on the user's go-ahead. Report the local refs left behind: `gitbutler/workspace`, `gitbutler/target` and every stack branch.
+Offer the teardown whenever the review looks finished, and on the user's go-ahead `but unapply` every applied stack, then run `but teardown --checkout-to <top-branch>`, so no stack stays marked in the workspace. Report the local refs left behind: `gitbutler/workspace`, `gitbutler/target` and every stack branch.
