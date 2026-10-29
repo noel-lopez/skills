@@ -12,7 +12,7 @@ End your report with a `Files:` section: every path you created, modified or del
 
 ## Plan message
 
-Invoke the `commit` skill to plan this ticket's atomic commits, reading `but diff <branch>` wherever the skill reads `git status` or `git diff HEAD`. Stop at its OK gate and answer with the proposal; the orchestrator writes the commits.
+Invoke the `commit` skill to plan this ticket's atomic commits, reading `but diff <branch>` wherever the skill reads `git status` or `git diff HEAD`. Run only its planning steps and answer with the plan: the orchestrator creates the commits with `but`, so leave the branches and the working tree as they are.
 
 ## PR message
 

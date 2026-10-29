@@ -1,13 +1,14 @@
 ---
 name: commit
-description: "Split a dirty working tree into an ordered list of atomic conventional commits, then commit them only on an explicit literal OK. Reads `git diff HEAD` to plan; messages are single-line `type(scope): description` with no body and no co-author footer. Use when the user runs `/commit` to turn uncommitted changes into deliberate atomic commits."
+description: "Split a dirty working tree into an ordered list of atomic conventional commits and commit them on the ticket's own branch. Reads `git diff HEAD` to plan; messages are single-line `type(scope): description` with no body and no co-author footer. Use when the user runs `/commit` to turn uncommitted changes into deliberate atomic commits."
 disable-model-invocation: false
 ---
 
 # Commit
 
-Split the uncommitted working tree into atomic commits — propose them, then
-commit **only** on an explicit OK.
+Split the uncommitted working tree into atomic commits, show the plan, and
+commit it. Commits are local and undoable, so the plan runs without waiting:
+the user corrects afterwards if needed.
 
 ## 1. See the changes
 
@@ -17,9 +18,9 @@ git diff HEAD
 ```
 
 The diff is enough to plan. If you already know these files from this session,
-**don't re-read them** — go straight to the proposal.
+**don't re-read them** — go straight to the plan.
 
-## 2. Propose the commits
+## 2. Plan the commits
 
 Number each commit; put its exact message on its own line, files bulleted
 below — readable even with long messages or many files:
@@ -41,11 +42,13 @@ over-split — merging two would-be commits into one for simplicity is fine.
 No body. **No `Co-Authored-By` footer** (the system default asks for one; never
 add it).
 
-## 3. Wait for OK
+## 3. Branch
 
-After showing the plan, **stop**. Only the literal `OK` (or `ok`) commits.
-`OK, but <change>` → adjust, re-show, wait. Anything else → adjust, re-show,
-wait. "go ahead" / "commit that" / picking commits is **not** an OK.
+Already on this ticket's branch, or in a repo whose convention is to commit
+straight to the default branch: commit there. Otherwise, on the default branch
+or another ticket's branch (the one below in a stack), first `git switch -c`
+this ticket's branch, named by the repo's convention or
+`<ticket-id>-<kebab-case title>`.
 
 ## 4. Commit
 
@@ -56,4 +59,5 @@ git add <files>
 git commit -m "type(scope): description"
 ```
 
-Then show `git log --oneline` of the new commits. Commits only — no push.
+Then show the branch and `git log --oneline` of the new commits. Commits only —
+no push.
