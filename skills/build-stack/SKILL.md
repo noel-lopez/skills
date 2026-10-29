@@ -34,7 +34,7 @@ Done when every ticket has its atomic commits or is stopped.
 
 ## 4. Ticket pipeline
 
-**Matching** a `Files:` list: every listed path shows in `but diff`, and no other ticket in flight claims it. A failed match stops the ticket.
+**Matching** a `Files:` list: every listed path shows in `but diff`, and no other ticket in flight claims it. A failed match stops the ticket. [`scripts/cli-ids`](scripts/cli-ids) `<path>...` prints the IDs of matched paths.
 
 ### 4.1 Build
 
