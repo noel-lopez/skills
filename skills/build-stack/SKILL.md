@@ -123,4 +123,4 @@ Done when `but status -fv` shows the new commit on its branch, the branches abov
 
 ## 10. Teardown
 
-Offer the teardown whenever the review looks finished, and on the user's go-ahead `but unapply` every applied stack, then run `but teardown --checkout-to <top-branch>`, so no stack stays marked in the workspace. Report the local refs left behind: `gitbutler/workspace`, `gitbutler/target` and every stack branch.
+Offer the teardown whenever the review looks finished, and on the user's go-ahead `but unapply` every applied stack, then run `but teardown --checkout-to <top-branch>`, so no stack stays marked in the workspace, and `git branch -D gitbutler/workspace gitbutler/target`. Report the stack branches left behind.
