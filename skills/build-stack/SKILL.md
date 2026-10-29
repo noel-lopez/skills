@@ -14,7 +14,7 @@ Carry every ticket of a spec through `build` and `improve` subagents to atomic c
 
 Then run [`scripts/check-stale-stacks`](scripts/check-stale-stacks) from the repo root: any output stops the run, naming each stack it lists.
 
-Then run `but setup`.
+Then run `but setup`, then `but pull`.
 
 ## 2. Stack
 
