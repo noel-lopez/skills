@@ -26,7 +26,7 @@ Done when `but status` shows a single stack holding every branch in that order.
 
 ## 3. Schedule
 
-A ticket is **ready** when every blocker is satisfied. Launch the pipeline of every ready ticket at once, with no concurrency cap, each subagent in the background. A ticket is **in flight** from its launch until its atomic commits, and **claims** every path in the `Files:` lists it reports.
+A ticket is **ready** when every blocker is satisfied. Launch the pipeline of every ready ticket at once, with no concurrency cap. A ticket is **in flight** from its launch until its atomic commits, and **claims** every path in the `Files:` lists it reports.
 
 An escalated **overlap** makes the ticket **wait on** the in-flight ticket whose `Files:` list claims that path, as one more blocker. If its branch sits below the blocker's, `but move <branch> --above <blocker-branch>`. Once that blocker is satisfied, resume the same subagent with "Overlap resolved: build on top." and its pipeline continues.
 
@@ -52,13 +52,19 @@ Launch a fresh subagent with the review message of [`briefs/improve.md`](briefs/
 
 Done when no listed path remains in `but diff`.
 
-### 4.4 Commit plan
+### 4.4 Prune comments
+
+Resume the improve subagent with the prune message of [`briefs/improve.md`](briefs/improve.md). Match its `Files:` list, an empty list included, and `but amend -t <wip-change-id> <hunk-ids>` when there are changes.
+
+Done when no listed path remains in `but diff`.
+
+### 4.5 Commit plan
 
 Resume the improve subagent with the plan message of [`briefs/improve.md`](briefs/improve.md).
 
 Done when every change in `but diff <branch>` belongs to exactly one planned commit.
 
-### 4.5 Replace the WIP
+### 4.6 Replace the WIP
 
 `but uncommit <wip-change-id>`, then one `but commit -b <branch> -m "<message>" <hunk-ids>` per planned commit, in plan order.
 
@@ -111,8 +117,9 @@ The repo stays in workspace mode. For each piece of feedback on a PR:
 1. Resume that ticket's improve subagent with the message of [`briefs/feedback.md`](briefs/feedback.md).
 2. Match its `Files:` list, then `but commit -b <branch> -m "<message>" <hunk-ids>`: always a new commit on top of the branch, leaving published commits untouched.
 3. `but push <top-branch>`, without `--with-force` or `--skip-force-push-protection`.
+4. Resume the same subagent with the PR message of [`briefs/improve.md`](briefs/improve.md), write its answer to a file outside the repo, and `gh pr edit <branch> --title "<title>" --body-file <file>`.
 
-Done when `but status -fv` shows the new commit on its branch, the branches above restacked on it, and nothing left unpushed.
+Done when `but status -fv` shows the new commit on its branch, the branches above restacked on it, nothing left unpushed, and the PR's description covering the fix.
 
 ## 10. Teardown
 
