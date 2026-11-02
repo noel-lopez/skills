@@ -48,6 +48,12 @@ npx skills add noel-lopez/skills --skill prune-comments
 npx skills add noel-lopez/skills --skill github-pr
 ```
 
+**`gh-attach`**, fuera del loop: sube capturas y vídeos locales a issues, PRs y comentarios de GitHub con el `--attach` de `gh`. Solo se encarga de la subida, para que otros flujos la usen cuando acaban en un adjunto, y no publica nada sin tu aprobación.
+
+```bash
+npx skills add noel-lopez/skills --skill gh-attach
+```
+
 **Las skills de Matt Pocock** que uso en el flujo (son de Matt Pocock; ver [créditos](#créditos)):
 
 ```bash
