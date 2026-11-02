@@ -16,7 +16,7 @@ El desarrollo entero está en [`guide/workflow.md`](guide/workflow.md): por qué
 
 ## Instalación
 
-Las skills se instalan con [skills.sh](https://skills.sh). Cuatro conjuntos, cuatro comandos.
+Las skills se instalan con [skills.sh](https://skills.sh), con un comando por conjunto.
 
 **Mis 4 skills** (el loop HITL `build → improve → commit` + el listón `coding-standards`), más `zoom-out`, que adopté de Matt cuando la retiró de su upstream (ver [créditos](#créditos)):
 
