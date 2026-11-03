@@ -1,6 +1,6 @@
 ---
 name: build
-description: "Implement one ticket end-to-end and leave the working tree dirty: no commit, push, branch, or ticket close. Use for `/build #N` (or a ticket URL/path)."
+description: "Implement one ticket end-to-end and leave the changes uncommitted. Use when asked to build or implement a ticket (`#N`, URL or path)."
 disable-model-invocation: false
 ---
 

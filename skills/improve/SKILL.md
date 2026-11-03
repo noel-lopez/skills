@@ -1,6 +1,6 @@
 ---
 name: improve
-description: "Review one ticket's uncommitted implementation in a fresh context: fix and harden in place, flag spec gaps for the human, never commit. Use for `/improve #N` (or a ticket URL/path)."
+description: "Review and harden one ticket's uncommitted implementation in place, flagging spec gaps for the human. Use when asked to improve or review a ticket's work before it is committed."
 disable-model-invocation: false
 ---
 

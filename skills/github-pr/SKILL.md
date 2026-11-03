@@ -1,6 +1,6 @@
 ---
 name: github-pr
-description: "Open a pull request for the current branch: draft title, base and description, then push and create it only on the user's explicit approval. Use for `/github-pr` or when asked to open a PR."
+description: "Draft a pull request for the current branch and open it once the user approves. Use when asked to open a PR."
 disable-model-invocation: false
 ---
 

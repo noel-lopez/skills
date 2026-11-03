@@ -1,6 +1,6 @@
 ---
 name: check-upstream
-description: Audits the manifest's tracked copies of Matt Pocock's skills against his upstream repo in two separate passes — main (his released state) and the open PRs. For main, flags tracked skills that changed since the pin and traces the dependency closure within main for broken/missing referenced skills. For each open PR, surfaces what it would change and traces the closure within that PR's own tree (e.g. a PR that splits out a new sub-skill an existing one starts to depend on). Reasons over SKILL.md bodies; never touches a SHA (the bundled scripts/upstream.sh owns that). Advances the reviewed-up-to pin only on an explicit literal OK. Use when the user runs `/check-upstream`, asks to check upstream drift, sync against Matt's skills, or see what changed in the tracked skills. Pass `--merged-only` for a cheap main-only check that skips open PRs.
+description: "Audit the tracked copies of Matt Pocock's skills against his upstream repo, main and open PRs, and advance the reviewed pin on the user's OK. Use when asked to check upstream drift or what changed in Matt's skills."
 disable-model-invocation: false
 ---
 

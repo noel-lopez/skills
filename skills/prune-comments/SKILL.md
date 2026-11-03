@@ -1,6 +1,6 @@
 ---
 name: prune-comments
-description: "Prune the comments in freshly implemented code. Use for `/prune-comments` or when asked to clean up comments."
+description: "Prune the comments in recently changed code down to the ones that explain a why. Use when asked to clean up comments."
 disable-model-invocation: false
 ---
 

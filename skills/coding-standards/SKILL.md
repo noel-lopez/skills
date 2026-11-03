@@ -1,6 +1,6 @@
 ---
 name: coding-standards
-description: The universal bar for good code — deep modules, design for testability, behavior-driven tests, mocking only at system boundaries, lean clean code. Use when writing, reviewing, refactoring, or judging the quality of any code, or when the user references coding standards, clean code, or deep modules. Reconciles this universal bar with the repo's own GLOSSARY.md, docs/adr/, and CLAUDE.md/AGENTS.md.
+description: "The bar for good code: deep modules, testable design, behavior-driven tests, mocks only at system boundaries. Use before writing, refactoring or testing any code, and when judging its quality."
 disable-model-invocation: false
 ---
 

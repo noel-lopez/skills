@@ -1,6 +1,6 @@
 ---
 name: commit
-description: "Split a dirty working tree into an ordered list of atomic conventional commits and commit them on the ticket's own branch. Reads `git diff HEAD` to plan; messages are single-line `type(scope): description` with no body and no co-author footer. Use when the user runs `/commit` to turn uncommitted changes into deliberate atomic commits."
+description: "Split the uncommitted changes into atomic conventional commits and commit them. Use when asked to commit."
 disable-model-invocation: false
 ---
 

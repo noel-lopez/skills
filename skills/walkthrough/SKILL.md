@@ -1,6 +1,6 @@
 ---
 name: walkthrough
-description: "Build a throwaway HTML reading guide for a set of changes (dirty tree, local commits, or a PR): what it means for users and for the system, then an ordered walk through the code with links that open each file in the IDE. Orients the human; leaves every quality call to them."
+description: "Build a throwaway HTML reading guide that walks a human through a set of changes (dirty tree, local commits or a PR)."
 disable-model-invocation: true
 ---
 
