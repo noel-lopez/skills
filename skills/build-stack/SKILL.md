@@ -30,6 +30,8 @@ A ticket is **ready** when every blocker is satisfied. Launch the pipeline of ev
 
 An escalated **overlap** makes the ticket **wait on** the in-flight ticket whose `Files:` list claims that path, as one more blocker. If its branch sits below the blocker's, `but move <branch> --above <blocker-branch>`. Once that blocker is satisfied, resume the same subagent with "Overlap resolved: build on top." and its pipeline continues.
 
+An escalated **environment need** (an install, a build, the apps running) is yours to meet: do it, then resume the same subagent with "Environment ready."
+
 Done when every ticket has its atomic commits or is stopped.
 
 ## 4. Ticket pipeline
