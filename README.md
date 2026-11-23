@@ -54,6 +54,12 @@ npx skills add noel-lopez/skills --skill github-pr
 npx skills add noel-lopez/skills --skill gh-attach
 ```
 
+**`tidy-skill`**, fuera del loop: la invoca el propio agente justo después de crear o editar una skill, un `AGENTS.md` o un `CLAUDE.md`. Revisa solo lo que acaba de cambiar y lo deja en lo que cambia el comportamiento del agente: poda con `writing-for-agents` y `unslop`, pide una revisión independiente sin contexto, prueba con subagentes las líneas dudosas y el trigger de la description, y entrega el diff con el porqué de cada cambio y, aparte, lo que tiene que decidir el humano.
+
+```bash
+npx skills add noel-lopez/skills --skill tidy-skill
+```
+
 **Las skills de Matt Pocock** que uso en el flujo (son de Matt Pocock; ver [créditos](#créditos)):
 
 ```bash
